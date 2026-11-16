@@ -20,6 +20,8 @@ export interface Company {
   proof?: 'confirmed' | 'pending';
   logo?: string;
   enabled: boolean;
+  /** Override config/pipeline.yaml → details.maxPerCompanyPerRun for slow sources. */
+  maxDetailsPerRun?: number;
   notes?: string;
 }
 

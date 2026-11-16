@@ -59,7 +59,7 @@ async function runCompany(c: Company) {
     const mine = Object.values(state.jobs).filter((s) => s.job.company === c.slug);
     const prevBySource = new Map(mine.map((s) => [s.sourceId, s]));
     const haveDescription = new Set(mine.filter((s) => s.job.descriptionHtml).map((s) => s.sourceId));
-    const ctx = { company: c, http, log: L, detailBudget: cfg.details.maxPerCompanyPerRun, haveDescription };
+    const ctx = { company: c, http, log: L, detailBudget: c.maxDetailsPerRun ?? cfg.details.maxPerCompanyPerRun, haveDescription };
 
     const raw = await fetcher.list(ctx);
     r.fetched = raw.length;
@@ -166,6 +166,9 @@ async function main() {
     state.validators = validators;
   }
   await pool(companies, 8, runCompany);
+  // Checkpoint: a crash during the (long) liveness phase never loses the fetch work.
+  state.validators = Object.fromEntries(http.validators);
+  saveState(path(cfg.output.stateFile), state);
   const live = args['skip-liveness'] ? { checked: 0, dead: 0, unknown: 0 } : await runLiveness();
 
   // Publish: in the latest feed (or within grace), verified within 48h, frontline per config.
