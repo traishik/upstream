@@ -1,0 +1,73 @@
+---
+import Base from '@/layouts/Base.astro';
+import Hero from '@/components/ui/Hero.astro';
+import CompanyMark from '@/components/ui/CompanyMark.astro';
+import JobRowView from '@/modules/jobs/components/JobRowView.tsx';
+import { copy } from '@content/copy';
+import { loadManifest } from '@/lib/manifest';
+import { timeAgo } from '@/lib/jobs';
+import { modules } from '@site';
+const m = loadManifest();
+const names = Object.fromEntries(m.companies.map((c) => [c.slug, c.name]));
+const featured = [...m.companies].filter((c) => c.count > 0).sort((a, b) => b.count - a.count).slice(0, 12);
+const pre = new Set(m.newest.map((r) => r.i));
+const fns = m.functions.filter((f) => f.count > 0 && f.id !== 'other').sort((a, b) => b.count - a.count);
+// Homepage widgets from enabled modules (site.config.ts → homepageWidget).
+const widgetFiles = import.meta.glob('../modules/*/widget.astro', { eager: true }) as Record<string, { default: any }>;
+const widgetFor = (id: string) => modules.find((x) => x.id === id && x.enabled && x.homepageWidget) ? widgetFiles[`../modules/${id}/widget.astro`]?.default : null;
+const AdsWidget = widgetFor('ads');
+const lowerWidgets = modules.filter((x) => !['ads', 'jobs', 'companies'].includes(x.id)).sort((a, b) => (a.navOrder ?? 99) - (b.navOrder ?? 99)).map((x) => widgetFor(x.id)).filter(Boolean);
+---
+<Base>
+  <Hero live={m.total} newToday={m.newToday} refreshedAgo={timeAgo(new Date(m.generatedAt).getTime())} />
+
+  {AdsWidget && <AdsWidget />}
+
+  <section class="mx-auto max-w-6xl px-4 py-24 sm:px-8">
+    <p class="meta">Start where you are</p>
+    <div class="mt-8 grid gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline md:grid-cols-3">
+      {copy.entryPaths.map((p) => (
+        <a href={p.href} class="group flex flex-col gap-4 bg-bg p-8 transition-colors duration-200 hover:bg-surface">
+          <h2 class="text-[length:var(--t-h3)] sm:text-3xl">{p.label}</h2>
+          <p class="text-sm text-muted">{p.hint}</p>
+          <span class="link mt-auto w-fit text-sm">Explore <span aria-hidden="true">→</span></span>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <section class="mx-auto max-w-6xl px-4 pb-24 sm:px-8">
+    <p class="meta">By function</p>
+    <ul class="mt-6 flex flex-wrap gap-2">
+      {fns.map((f) => (
+        <li><a href={`/jobs?function=${f.id}`} class="inline-flex h-10 items-center gap-2 rounded-full border border-hairline px-4 text-sm text-muted transition-colors duration-200 hover:border-accent hover:text-ink">{f.label} <span class="font-mono text-xs">{f.count.toLocaleString()}</span></a></li>
+      ))}
+    </ul>
+  </section>
+
+  {featured.length > 0 && (
+    <section class="border-y border-hairline bg-surface">
+      <div class="mx-auto max-w-6xl px-4 py-12 sm:px-8">
+        <p class="meta">Straight from their careers pages</p>
+        <ul class="mt-8 grid grid-cols-3 gap-6 sm:grid-cols-6">
+          {featured.map((c) => (
+            <li><a href={`/companies/${c.slug}/`} class="flex flex-col items-center gap-3 text-center text-xs text-muted hover:text-ink"><CompanyMark name={c.name} logo={c.logo} />{c.name}</a></li>
+          ))}
+        </ul>
+        <a href="/companies" class="link mt-8 inline-block text-sm">All {m.companies.length} companies →</a>
+      </div>
+    </section>
+  )}
+
+  <section class="mx-auto max-w-6xl px-4 py-24 sm:px-8">
+    <div class="flex items-end justify-between gap-4">
+      <h2 class="text-[length:var(--t-h2)]">Newest roles</h2>
+      <a href="/jobs" class="link text-sm">See all {m.total.toLocaleString()} →</a>
+    </div>
+    <ul class="mt-8 divide-y divide-hairline border-y border-hairline">
+      {m.newest.slice(0, 8).map((r) => <JobRowView row={r} companyName={names[r.c] ?? r.c} prerendered={pre} />)}
+    </ul>
+  </section>
+
+  {lowerWidgets.map((W) => <W />)}
+</Base>

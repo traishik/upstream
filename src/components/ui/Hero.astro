@@ -1,0 +1,81 @@
+---
+/**
+ * The hero, home of "First light": the only place the dawn glow appears.
+ * Deep onyx easing into a faint champagne horizon, a metaphor for a new start.
+ */
+import { copy } from '@content/copy';
+import LiveCounter from './LiveCounter.astro';
+import Encouragement from './Encouragement.astro';
+
+interface Props {
+  headline?: string;
+  live: number;
+  newToday: number;
+  refreshedAgo: string;
+}
+const { headline = copy.hero.headlines[0], live, newToday, refreshedAgo } = Astro.props;
+---
+<section class="hero relative isolate overflow-hidden">
+  <div class="first-light pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="glow"></div>
+    <div class="horizon"></div>
+  </div>
+  <div class="mx-auto max-w-6xl px-4 pb-24 pt-24 sm:px-8 sm:pb-32 sm:pt-32">
+    <p class="meta reveal mb-8 flex items-center gap-4"><span class="rule-accent inline-block"></span>Straight from the source</p>
+    <h1 class="reveal max-w-4xl text-[length:var(--t-display)]" style="--d: 80ms">{headline}</h1>
+    <p class="reveal mt-8 max-w-2xl text-[length:var(--t-body-lg)] leading-8 text-muted" style="--d: 160ms">{copy.hero.sub}</p>
+    <div class="reveal mt-12 flex flex-wrap items-center gap-4" style="--d: 240ms">
+      <a href="/jobs" class="inline-flex h-12 items-center gap-2 rounded-full bg-accent-fill px-8 text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-accent-fill-strong">
+        {copy.hero.primaryCta} <span aria-hidden="true">→</span>
+      </a>
+      <a href="/about#how-we-verify" class="inline-flex h-12 items-center rounded-full border border-hairline-strong px-6 text-sm transition-colors duration-200 hover:border-accent">
+        {copy.hero.secondaryCta}
+      </a>
+    </div>
+    <div class="reveal mt-16" style="--d: 320ms">
+      <LiveCounter live={live} newToday={newToday} refreshedAgo={refreshedAgo} />
+      <Encouragement />
+    </div>
+  </div>
+  <div class="relative border-t border-hairline">
+    <ul class="mx-auto grid max-w-6xl grid-cols-1 gap-4 px-4 py-6 sm:grid-cols-3 sm:px-8">
+      {copy.trust.map((t) => (
+        <li class="meta flex items-center gap-3"><span class="inline-block size-1 rounded-full bg-accent" aria-hidden="true"></span>{t}</li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .first-light .glow {
+    position: absolute;
+    inset: auto -20% -55% -20%;
+    height: 110%;
+    background:
+      radial-gradient(60% 55% at 50% 100%, var(--glow-core) 0%, var(--glow-mid) 38%, var(--glow-edge) 72%);
+    filter: blur(8px);
+    opacity: 0;
+    animation: dawn var(--dur-slow) var(--ease-out) 120ms forwards;
+  }
+  .first-light .horizon {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--c-accent) 50%, transparent);
+    opacity: 0.35;
+  }
+  @keyframes dawn {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  /* Text is never hidden: if animation stalls (bots, Lighthouse, slow devices) the copy is still
+     readable. Motion is a gentle 8px rise only; the fade belongs to the decorative glow. */
+  .reveal {
+    animation: rise 700ms var(--ease-out) both;
+    animation-delay: var(--d, 0ms);
+  }
+  @keyframes rise { from { transform: translateY(8px); } to { transform: none; } }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal, .first-light .glow { opacity: 1; transform: none; animation: none; }
+  }
+</style>

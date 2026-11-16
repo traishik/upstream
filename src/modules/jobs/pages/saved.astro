@@ -1,0 +1,14 @@
+---
+import Base from '@/layouts/Base.astro';
+import SavedList from '@/modules/jobs/components/SavedList.tsx';
+import { loadManifest } from '@/lib/manifest';
+const names = Object.fromEntries(loadManifest().companies.map((c) => [c.slug, c.name]));
+---
+<Base title="Saved roles" noindex>
+  <section class="mx-auto max-w-4xl px-4 pb-24 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>Kept on this device</p>
+    <h1 class="mt-6 text-[length:var(--t-h1)]">Saved roles</h1>
+    <p class="mt-4 max-w-2xl text-muted">No account, no tracking. Saved roles stay in this browser. We check each one against the latest refresh and tell you if it has closed.</p>
+    <div class="mt-12"><SavedList client:load names={names} /></div>
+  </section>
+</Base>

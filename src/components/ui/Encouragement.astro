@@ -1,0 +1,27 @@
+---
+/** A quiet, rotating line of encouragement. Dismissible; remembered locally. No urgency, no hype. */
+import { copy } from '@content/copy';
+const lines = copy.encouragement;
+---
+<div data-encourage class="mt-6 flex max-w-xl items-start gap-3 text-sm text-muted" hidden>
+  <p class="font-serif text-lg font-light italic leading-7" data-line>{lines[0]}</p>
+  <button type="button" data-dismiss class="meta mt-1 shrink-0 hover:text-ink" aria-label="Hide encouragement">Hide</button>
+</div>
+<script define:vars={{ lines }}>
+  (() => {
+    const el = document.querySelector('[data-encourage]');
+    if (!el) return;
+    let hidden = false;
+    try { hidden = localStorage.getItem('upstream:encourage-hidden') === '1'; } catch (_) {}
+    if (hidden) return;
+    const line = el.querySelector('[data-line]');
+    // One line per day, so it feels steady rather than noisy.
+    const day = Math.floor(Date.now() / 864e5);
+    line.textContent = lines[day % lines.length];
+    el.hidden = false;
+    el.querySelector('[data-dismiss]').addEventListener('click', () => {
+      el.hidden = true;
+      try { localStorage.setItem('upstream:encourage-hidden', '1'); } catch (_) {}
+    });
+  })();
+</script>

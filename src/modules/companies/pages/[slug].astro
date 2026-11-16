@@ -1,0 +1,81 @@
+---
+import Base from '@/layouts/Base.astro';
+import CompanyMark from '@/components/ui/CompanyMark.astro';
+import LinkOnlyCard from '@/components/ui/LinkOnlyCard.astro';
+import InsiderPrompt from '@/components/ui/InsiderPrompt.astro';
+import JobRowView from '@/modules/jobs/components/JobRowView.tsx';
+import { loadAllRows, loadManifest } from '@/lib/manifest';
+import { postedOrSeen, type Row } from '@/lib/jobs';
+import InsiderCard from '@/components/ui/InsiderCard.astro';
+import { sharedAgo, visibleNotes } from '@/lib/insiders';
+import { isEnabled } from '@/lib/modules';
+import { copy } from '@content/copy';
+
+export function getStaticPaths() {
+  const m = loadManifest();
+  const rows = loadAllRows();
+  const byCompany = new Map<string, Row[]>();
+  for (const r of rows) (byCompany.get(r.c) ?? byCompany.set(r.c, []).get(r.c)!).push(r);
+  const prerendered = m.newest.map((r) => r.i);
+  return m.companies.map((c) => ({
+    params: { slug: c.slug },
+    props: { c, rows: (byCompany.get(c.slug) ?? []).sort((a, b) => postedOrSeen(b) - postedOrSeen(a)).slice(0, 50), prerendered },
+  }));
+}
+const { c, rows, prerendered } = Astro.props;
+const pre = new Set<string>(prerendered);
+const notes = isEnabled('insiders') ? visibleNotes(c.slug) : [];
+const radarShare = c.dated && c.dated >= 10 ? Math.round(((c.longOpen ?? 0) / c.dated) * 100) : null;
+---
+<Base title={`${c.name} careers`} description={c.mode === 'link-only' ? `${c.name} roles: straight to their official careers page.` : `${c.count} live roles at ${c.name}, straight from their official careers page.`}>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <a href="/companies" class="meta hover:text-ink">← All companies</a>
+    <div class="mt-8 flex flex-wrap items-center gap-6">
+      <CompanyMark name={c.name} logo={c.logo} size="lg" />
+      <div>
+        <h1 class="text-[length:var(--t-h1)]">{c.name}</h1>
+        <p class="meta mt-2">
+          {c.mode === 'link-only' ? 'Direct to source' : `${c.count.toLocaleString()} live roles`} ·
+          <a class="link" href={c.careersUrl} target="_blank" rel="noopener" data-track="careers_click" data-track-props={JSON.stringify({ company: c.slug })}>Official careers page ↗</a>
+        </p>
+      </div>
+    </div>
+
+    {radarShare !== null && (
+      <div class="mt-8 flex max-w-2xl flex-wrap items-baseline gap-x-4 gap-y-2 rounded-[var(--radius)] border border-hairline p-4">
+        <span class="meta text-accent">Ghost-job radar</span>
+        <span class="font-serif text-2xl">{radarShare}%</span>
+        <span class="text-sm text-muted">of {c.name}'s dated roles have been open 60+ days. {radarShare <= 15 ? 'Mostly fresh postings.' : radarShare <= 35 ? 'A mix of fresh and long-running roles.' : 'Many long-running roles; referrals help most here.'}</span>
+      </div>
+    )}
+
+    {c.mode === 'link-only' ? (
+      <div class="mt-12 max-w-2xl"><LinkOnlyCard company={c.name} careersUrl={c.careersUrl} logo={c.logo} variant="alt" /></div>
+    ) : rows.length ? (
+      <div class="mt-12">
+        <h2 class="meta mb-4">Newest open roles</h2>
+        <ul class="divide-y divide-hairline border-y border-hairline">
+          {rows.map((r) => <JobRowView row={r} companyName={c.name} prerendered={pre} />)}
+        </ul>
+        {c.count > rows.length && (
+          <div class="mt-8 flex justify-center">
+            <a href={`/jobs?company=${c.slug}`} class="inline-flex h-12 items-center rounded-full border border-hairline-strong px-8 text-sm transition-colors duration-200 hover:border-accent">
+              See all {c.count.toLocaleString()} {c.name} roles →
+            </a>
+          </div>
+        )}
+      </div>
+    ) : (
+      <p class="mt-12 max-w-xl text-muted">No verified roles right now. New ones land every few hours, and we check {c.name}'s careers page each time.</p>
+    )}
+
+    {notes.length > 0 && (
+      <div class="mt-16 max-w-3xl">
+        <h2 class="text-[length:var(--t-h3)]">{copy.insiders.sectionTitle(c.name)}</h2>
+        <div class="mt-4">{notes.map((n) => <InsiderCard id={n.id} name={n.name} role={n.role} tenure={n.tenure} tip={n.tip} referralUrl={n.referralUrl} referralNote={n.referralNote} sharedAgo={sharedAgo(n.createdAt)} />)}</div>
+        <p class="mt-4 text-xs text-muted">{copy.insiders.disclaimer}</p>
+      </div>
+    )}
+    {isEnabled('insiders') && <div class="mt-16"><InsiderPrompt company={c.name} slug={c.slug} /></div>}
+  </section>
+</Base>

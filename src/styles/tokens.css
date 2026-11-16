@@ -1,0 +1,84 @@
+/*
+ * Design tokens: the one source of truth for color, type and motion.
+ * Ivory is the default theme (owner feedback, 2026-11-14: black + bright text was hard to read).
+ * "Evening" is a softened warm-charcoal dark theme, available from the toggle.
+ * Every text/background pair is checked for WCAG AA by `npm run contrast`.
+ */
+:root {
+  color-scheme: light;
+
+  /* Palette: ivory */
+  --c-bg: #f6f2ea;          /* ivory */
+  --c-surface: #efe9dd;     /* parchment */
+  --c-surface-2: #e7e0d2;
+  --c-hairline: #ddd5c6;
+  --c-hairline-strong: #c9c0ae;
+  --c-text: #1d1c1a;        /* soft onyx: easier on the eyes than pure black */
+  --c-text-muted: #5f5a51;  /* stone */
+  --c-accent: #7d5f27;      /* champagne, deepened for AA on ivory */
+  --c-accent-strong: #634a1c;
+  --c-accent-fill: #c9a96e; /* champagne itself, for filled buttons */
+  --c-accent-fill-strong: #bb9a5c;
+  --c-on-accent: #1d1c1a;
+  --c-live: #3f7a4f;        /* sage, for "verified live" dots */
+  --c-focus: #7d5f27;
+
+  /* First light: hero only */
+  --glow-core: rgb(214 166 92 / 0.42);
+  --glow-mid: rgb(230 196 140 / 0.20);
+  --glow-edge: rgb(246 242 234 / 0);
+
+  /* Type */
+  --f-serif: 'Bodoni Moda Variable', 'Didot', 'Bodoni 72', Georgia, serif;
+  --w-serif: 400; /* Bodoni Moda's lightest weight */
+  --f-sans: 'Geist Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --f-mono: 'Geist Mono Variable', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Scale (rem). 8px grid: line-heights and spacing land on multiples of 8. */
+  --t-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.5rem);
+  --t-h1: clamp(2.25rem, 1.6rem + 2.6vw, 3.5rem);
+  --t-h2: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  --t-h3: 1.5rem;
+  --t-body-lg: 1.125rem;
+  --t-body: 1rem;
+  --t-small: 0.875rem;
+  --t-meta: 0.6875rem;
+  --tracking-meta: 0.16em;
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-fast: 200ms;
+  --dur: 280ms;
+  --dur-slow: 1200ms;
+
+  --radius: 2px;
+  --radius-pill: 999px;
+}
+
+/* Evening: warm charcoal instead of pure black, and slightly dimmed ivory text to avoid glare. */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --c-bg: #1c1b19;
+  --c-surface: #252420;
+  --c-surface-2: #2d2b27;
+  --c-hairline: #3a3732;
+  --c-hairline-strong: #4a4740;
+  --c-text: #e6e0d4;
+  --c-text-muted: #aaa497;
+  --c-accent: #d2b47c;
+  --c-accent-strong: #e0c793;
+  --c-accent-fill: #c9a96e;
+  --c-accent-fill-strong: #d8bc86;
+  --c-on-accent: #1c1b19;
+  --c-live: #93c09d;
+  --c-focus: #e0c793;
+  --glow-core: rgb(214 170 104 / 0.26);
+  --glow-mid: rgb(150 98 46 / 0.12);
+  --glow-edge: rgb(28 27 25 / 0);
+}
+
+/* Alternate serif, kept for comparison. Load its font files if you switch to it. */
+:root[data-serif='cormorant'] {
+  --f-serif: 'Cormorant Garamond', 'Iowan Old Style', Georgia, serif;
+  --w-serif: 300;
+}

@@ -1,0 +1,38 @@
+# Pipeline settings. Change values here, not in code.
+
+# Cron for the GitHub Actions refresh (also edit .github/workflows/refresh.yml's schedule to match).
+cadence: "0 */6 * * *"
+
+# Frontline/hourly roles (store, warehouse, drivers, tellers…). Excluded by default.
+includeFrontline: false
+
+userAgent: "UpstreamBot/0.1 (+https://upstreamjobs.pages.dev/about#bot; job index linking to official postings)"
+
+http:
+  minIntervalMsPerHost: 1000   # at most 1 request/second per host
+  timeoutMs: 30000
+  maxRetries: 5                # exponential backoff on 429/5xx
+
+# Company feed failed? Keep its last-known jobs this long, then drop them.
+failureGraceHours: 24
+
+# Skip deploy if the total job count drops more than this fraction vs. the last run.
+maxDropFraction: 0.5
+
+details:
+  # Fetch full job details wherever the source allows. New jobs first; per-host cap per run keeps
+  # first runs bounded. Anything left over is fetched on later runs.
+  maxPerCompanyPerRun: 400
+
+liveness:
+  recheckEveryHours: 40        # each job re-verified well within 48h
+  maxChecksPerHostPerRun: 5000
+  timeBudgetMinutes: 150       # stop starting new checks after this; the rest wait for next run
+  concurrencyHosts: 12
+
+output:
+  publicDir: public/data       # served to the browser
+  stateFile: data/state/state.json
+  reportFile: data/run-report.json
+  descShards: 256
+  newestForHome: 300

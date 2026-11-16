@@ -1,0 +1,33 @@
+---
+import Base from '@/layouts/Base.astro';
+import { Content } from '@content/about.md';
+import { site } from '@site';
+---
+<Base title="About" description={`Why ${site.name} exists, and who built it.`}>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <div class="grid gap-12 md:grid-cols-[280px_1fr]">
+      <div>
+        <div class="aspect-[4/5] w-full rounded-[var(--radius)] border border-dashed border-hairline-strong bg-surface" role="img" aria-label="Portrait placeholder">
+          <div class="grid h-full place-items-center"><span class="meta">Portrait</span></div>
+        </div>
+        <p class="mt-4 font-serif text-2xl">{site.owner}</p>
+        <p class="meta mt-1">Builder</p>
+      </div>
+      <div>
+        <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>About</p>
+        <h1 class="mt-6 text-[length:var(--t-h1)]">Built by a job seeker, for job seekers.</h1>
+        <div class="prose-job about mt-10 max-w-2xl"><Content /></div>
+        <div id="how-we-verify" class="mt-16 max-w-2xl rounded-[var(--radius)] border border-hairline bg-surface p-8">
+          <h2 class="text-[length:var(--t-h2)]">How we verify</h2>
+          <ol class="prose-job mt-6">
+            <li>We read each company's <strong>own careers page</strong>, or the hiring system that page uses, and never a job board.</li>
+            <li>A role shows here only if it was in the company's feed at our latest refresh, every few hours.</li>
+            <li>We also check its apply link: it must open, and it must not say the role is closed or filled.</li>
+            <li>When a role disappears from the company's site, it disappears from ours.</li>
+          </ol>
+          <p class="mt-6 text-sm text-muted" id="bot">Our crawler identifies itself as UpstreamBot, follows robots.txt, and makes at most one request per second per site. Companies can <a class="link" href="/feedback?type=other&topic=removal">request a correction or removal</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,20 @@
+---
+/**
+ * The one button that matters. Opens the exact official posting in a new tab.
+ * Nothing (ads included) is ever placed between the reader and this button.
+ */
+import { copy } from '@content/copy';
+interface Props { href: string; company: string; size?: 'md' | 'lg'; class?: string }
+const { href, company, size = 'lg', class: cls = '' } = Astro.props;
+const h = size === 'lg' ? 'h-14 px-8 text-base' : 'h-12 px-6 text-sm';
+---
+<a
+  href={href}
+  target="_blank"
+  rel="noopener"
+  class={`group inline-flex items-center justify-center gap-3 rounded-full bg-accent-fill font-medium text-on-accent transition-colors duration-200 hover:bg-accent-fill-strong ${h} ${cls}`}
+>
+  {copy.apply(company)}
+  <span aria-hidden="true" class="transition-transform duration-200 ease-out group-hover:translate-x-1">→</span>
+  <span class="sr-only">(opens the official posting in a new tab)</span>
+</a>

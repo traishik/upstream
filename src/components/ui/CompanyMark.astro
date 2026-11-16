@@ -1,0 +1,24 @@
+---
+/**
+ * Company logo, monochrome ivory, from a local file under /public/logos.
+ * Falls back to a refined serif monogram. Never hotlinked.
+ */
+interface Props { name: string; logo?: string; size?: 'sm' | 'md' | 'lg' }
+const { name, logo, size = 'md' } = Astro.props;
+const initials = name
+  .replace(/[^A-Za-z0-9& ]/g, ' ')
+  .split(/\s+/)
+  .filter(Boolean)
+  .slice(0, 2)
+  .map((w) => w[0])
+  .join('')
+  .toUpperCase();
+const dim = { sm: 'size-8 text-sm', md: 'size-10 text-base', lg: 'size-16 text-2xl' }[size];
+---
+<span class={`inline-grid shrink-0 place-items-center rounded-full border border-hairline bg-surface ${dim}`} aria-hidden="true">
+  {logo ? (
+    <img src={logo} alt="" class="h-1/2 w-1/2 object-contain opacity-90" loading="lazy" decoding="async" />
+  ) : (
+    <span class="font-serif font-light tracking-wide text-ink">{initials}</span>
+  )}
+</span>

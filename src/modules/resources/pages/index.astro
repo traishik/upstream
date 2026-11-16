@@ -1,0 +1,15 @@
+---
+// Scaffolded module (disabled in site.config.ts). Add Markdown files to content/resources/ and flip `enabled`.
+import Base from '@/layouts/Base.astro';
+const entries = Object.values(import.meta.glob('../../../../content/resources/*.md', { eager: true })) as { frontmatter: { title: string; summary?: string; url?: string } }[];
+---
+<Base title="Resources">
+  <section class="mx-auto max-w-4xl px-4 pb-24 pt-16 sm:px-8">
+    <h1 class="text-[length:var(--t-h1)]">Resources</h1>
+    {entries.length === 0 ? <p class="mt-6 text-muted">Nothing here yet.</p> : (
+      <ul class="mt-12 divide-y divide-hairline border-y border-hairline">
+        {entries.map((e) => <li class="py-6"><a href={e.frontmatter.url ?? '#'} class="font-medium hover:text-accent">{e.frontmatter.title}</a>{e.frontmatter.summary && <p class="mt-1 text-sm text-muted">{e.frontmatter.summary}</p>}</li>)}
+      </ul>
+    )}
+  </section>
+</Base>

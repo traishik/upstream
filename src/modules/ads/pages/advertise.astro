@@ -1,0 +1,47 @@
+---
+import Base from '@/layouts/Base.astro';
+import AdSlot from '@/components/ui/AdSlot.astro';
+import { loadManifest } from '@/lib/manifest';
+import { site } from '@site';
+const m = loadManifest();
+---
+<Base title="Advertise" description={`Sponsor ${site.name}: calm, relevant placements in front of people actively choosing their next role.`}>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>Advertise</p>
+    <h1 class="mt-6 max-w-3xl text-[length:var(--t-h1)]">Reach people who apply with intent</h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      {site.name} readers aren't scrolling for entertainment. They're choosing where to spend their next few years.
+      We keep sponsorships few, relevant and quiet, so they're noticed and trusted.
+    </p>
+    <div class="mt-16 grid gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline md:grid-cols-3">
+      {[
+        ['Home', 'One placement below the hero. The first thing returning visitors see after the live counter.'],
+        ['Job list', 'One card every twelve roles, never between a reader and an Apply button.'],
+        ['Job detail', 'Sidebar on desktop, below the description on mobile.'],
+      ].map(([t, d]) => (
+        <div class="bg-bg p-8"><p class="meta">{t}</p><p class="mt-3 text-sm text-muted">{d}</p></div>
+      ))}
+    </div>
+    <div class="mt-16 grid gap-12 lg:grid-cols-2">
+      <div>
+        <h2 class="text-[length:var(--t-h2)]">What we promise</h2>
+        <ul class="prose-job mt-6">
+          <li>No pop-ups, interstitials, auto-play or tracking pixels.</li>
+          <li>Clearly labeled “Sponsored.” Always.</li>
+          <li>Nothing that charges job seekers or promises “guaranteed interviews.”</li>
+          <li>Reserved space, so pages never jump when an ad loads.</li>
+        </ul>
+        <p class="mt-8 text-sm text-muted">{m.total > 0 ? `${m.total.toLocaleString()} live roles from ${m.companies.length} companies today.` : ''}</p>
+        <a href="/feedback?type=other&topic=advertising" class="mt-8 inline-flex h-12 items-center rounded-full bg-accent-fill px-8 text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-accent-fill-strong">Start a conversation →</a>
+      </div>
+      <div>
+        <p class="meta mb-3">How a sponsorship looks</p>
+        <AdSlot placement="home">
+          <p class="meta text-accent">Sponsor · Your company</p>
+          <p class="font-serif text-xl">Your headline, in our typography.</p>
+          <p class="text-sm text-muted">One line of copy and a link. Simple and respectful.</p>
+        </AdSlot>
+      </div>
+    </div>
+  </section>
+</Base>

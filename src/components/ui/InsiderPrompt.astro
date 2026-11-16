@@ -1,0 +1,20 @@
+---
+/** Invitation for employees to share a tip or referral. Appears on home, /companies/[slug] and /insiders. */
+import { copy } from '@content/copy';
+interface Props { company?: string; slug?: string }
+const { company, slug } = Astro.props;
+const href = `/insiders/share${slug ? `?company=${encodeURIComponent(slug)}` : ''}`;
+---
+<section class="relative overflow-hidden rounded-[var(--radius)] border border-hairline bg-surface">
+  <div class="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-accent to-transparent opacity-60" aria-hidden="true"></div>
+  <div class="grid gap-8 p-8 sm:p-12 md:grid-cols-[1fr_auto] md:items-end">
+    <div>
+      <p class="meta flex items-center gap-4 text-accent"><span class="rule-accent inline-block"></span>{copy.insiders.eyebrow}</p>
+      <h3 class="mt-6 text-[length:var(--t-h2)]">{company ? `Work at ${company}?` : copy.insiders.promptTitle}</h3>
+      <p class="mt-4 max-w-xl text-muted">{copy.insiders.promptBody}</p>
+    </div>
+    <a href={href} class="inline-flex h-12 w-fit items-center gap-2 rounded-full border border-accent px-6 text-sm text-accent transition-colors duration-200 hover:bg-accent-fill hover:text-on-accent">
+      {copy.insiders.promptCta} <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>

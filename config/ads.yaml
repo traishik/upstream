@@ -1,0 +1,45 @@
+# Ads. One of three modes per slot, in this order of preference:
+#   direct  : your own sponsor creative, shown between its start and end dates
+#   network : an ad network (e.g. Google AdSense). OFF until the network approves the site.
+#   house   : fallback that promotes our own pages (always available)
+# Ads never sit between a reader and an Apply button. Placements: home, list, detail.
+
+network:
+  enabled: false               # flip to true only after approval; the privacy page updates automatically
+  provider: adsense            # adsense is the only provider wired so far
+  client: ""                   # e.g. ca-pub-1234567890
+  slots: { home: "", list: "", detail: "" }   # ad unit ids per placement
+
+direct: []
+# Example sponsor (dates are inclusive, UTC):
+#  - id: acme-2027-q1
+#    sponsor: Acme Corp
+#    headline: "Acme is hiring designers who sweat the details"
+#    body: "Join the team behind the calmest checkout on the internet."
+#    url: "https://acme.example/careers?utm_source=upstream"
+#    start: 2027-01-01
+#    end: 2027-03-31
+#    placements: [home, list, detail]
+
+house:
+  - id: missing-company
+    eyebrow: House
+    headline: "Know a company we should add?"
+    body: ""
+    cta: "Tell us, we read every note"
+    url: /feedback?type=missing-company
+    placements: [home, list]
+  - id: inside-track
+    eyebrow: Inside Track
+    headline: "Work at one of these companies?"
+    body: "Share a tip or a referral with people applying there. It takes two minutes."
+    cta: "Pay it forward"
+    url: /insiders/share
+    placements: [home, list, detail]
+  - id: advertise
+    eyebrow: House
+    headline: "Reach people who apply with intent"
+    body: "Calm, relevant sponsorships. No pop-ups, no tracking pixels."
+    cta: "Advertise with us"
+    url: /advertise
+    placements: [detail, list]

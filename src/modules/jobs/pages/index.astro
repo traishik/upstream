@@ -1,0 +1,26 @@
+---
+import Base from '@/layouts/Base.astro';
+import JobBoard from '@/modules/jobs/components/JobBoard.tsx';
+import { loadManifest } from '@/lib/manifest';
+import { timeAgo } from '@/lib/jobs';
+import { isEnabled } from '@/lib/modules';
+import { listCreatives } from '@/lib/ads';
+const ads = isEnabled('ads') ? listCreatives() : [];
+const m = loadManifest();
+const companies = m.companies.map(({ slug, name, tier, mode, count }) => ({ slug, name, tier, mode, count }));
+const stale = Date.now() - new Date(m.generatedAt).getTime() > 24 * 36e5;
+---
+<Base title="Live roles" description={`${m.total.toLocaleString()} live roles from official company careers pages, verified every few hours.`}>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>Straight from the source</p>
+    <h1 class="mt-6 text-[length:var(--t-h1)]">Live roles</h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      {m.total.toLocaleString()} openings from {m.companies.filter((c) => c.count).length} companies' own careers pages.
+      Each one was in the company's feed at our last refresh and its apply link was checked.
+    </p>
+    <p class="meta mt-4" data-refreshed={m.generatedAt}>Refreshed {timeAgo(new Date(m.generatedAt).getTime())}{stale && <span class="ml-3 text-accent">· Data may be stale</span>}</p>
+    <div class="mt-12">
+      <JobBoard client:load total={m.total} functions={m.functions} levels={m.levels} companies={companies} newest={m.newest} includeFrontline={m.includeFrontline} ads={ads} />
+    </div>
+  </section>
+</Base>

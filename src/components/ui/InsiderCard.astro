@@ -1,0 +1,49 @@
+---
+/**
+ * One community contribution: a tip, a referral, or both.
+ * Referral links are only accepted on the company's own domain or its verified ATS board
+ * (the same allowlist as config/companies.yaml), so a card can never point somewhere unsafe.
+ */
+import Badge from './Badge.astro';
+import { copy } from '@content/copy';
+interface Props {
+  id: string;
+  name?: string;        // first name or "Anonymous"
+  role?: string;        // e.g. "Senior PM"
+  tenure?: string;      // e.g. "3 yrs"
+  tip?: string;
+  referralUrl?: string;
+  referralNote?: string; // e.g. "Any Seattle PM role"
+  sharedAgo: string;
+}
+const p = Astro.props;
+const host = p.referralUrl ? new URL(p.referralUrl).hostname.replace(/^www\./, '') : '';
+const who = [p.name ?? 'Anonymous', p.role, p.tenure].filter(Boolean).join(' · ');
+---
+<article class="flex flex-col gap-6 border-t border-hairline py-8">
+  <header class="flex flex-wrap items-center justify-between gap-3">
+    <p class="meta text-ink">{who}</p>
+    <div class="flex gap-2">
+      {p.tip && <Badge>Tip</Badge>}
+      {p.referralUrl && <Badge tone="accent">Referral</Badge>}
+    </div>
+  </header>
+  {p.tip && (
+    <blockquote class="font-serif text-xl italic leading-8 text-ink sm:text-2xl sm:leading-9">“{p.tip}”</blockquote>
+  )}
+  {p.referralUrl && (
+    <div class="flex flex-col gap-3 rounded-[var(--radius)] border border-hairline bg-surface p-4 sm:flex-row sm:items-center sm:justify-between">
+      <div>
+        <p class="meta">{copy.insiders.referralLabel} · {host}</p>
+        {p.referralNote && <p class="mt-1 text-sm text-muted">{p.referralNote}</p>}
+      </div>
+      <a href={p.referralUrl} target="_blank" rel="noopener nofollow" class="link w-fit shrink-0 text-sm">
+        {copy.insiders.referralCta} →<span class="sr-only"> (opens {host} in a new tab)</span>
+      </a>
+    </div>
+  )}
+  <footer class="meta flex items-center gap-4 !text-[0.625rem]">
+    <span>Shared {p.sharedAgo}</span>
+    <a href={`/feedback?type=other&report=${p.id}`} class="hover:text-ink">{copy.insiders.report}</a>
+  </footer>
+</article>

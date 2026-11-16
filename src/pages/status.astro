@@ -1,0 +1,44 @@
+---
+// Hidden run-status page (not linked, noindex). Renders the latest pipeline run report.
+import Base from '@/layouts/Base.astro';
+import { loadRunReport } from '@/lib/manifest';
+const r = loadRunReport();
+const tone: Record<string, string> = { ok: 'text-live', grace: 'text-accent', error: 'text-red-700', dropped: 'text-red-700', 'link-only': 'text-muted', disabled: 'text-muted', skipped: 'text-muted' };
+---
+<Base title="Status" noindex>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <h1 class="text-[length:var(--t-h1)]">Pipeline status</h1>
+    {!r ? <p class="mt-6 text-muted">No run report yet.</p> : (
+      <>
+        <p class="meta mt-4">Run {new Date(r.startedAt).toUTCString()} · {Math.round(r.durationSec / 60)} min</p>
+        {r.skipDeploy && <p class="mt-6 rounded-[var(--radius)] border border-accent p-4 text-sm">Deploy skipped: {r.reason}</p>}
+        <dl class="mt-8 grid grid-cols-2 gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline sm:grid-cols-4">
+          {Object.entries(r.totals).filter(([, v]) => v !== undefined).map(([k, v]) => (
+            <div class="bg-bg p-4"><dt class="meta !text-[0.625rem]">{k.replace(/([A-Z])/g, ' $1')}</dt><dd class="mt-1 font-mono text-lg">{typeof v === 'number' ? v.toLocaleString() : String(v)}</dd></div>
+          ))}
+        </dl>
+        <div class="mt-12 overflow-x-auto">
+          <table class="w-full min-w-[760px] text-left text-sm">
+            <thead class="meta"><tr>{['Company', 'Status', 'Fetched', 'US', 'Added', 'Removed', 'Dead links', 'Published', 'Error'].map((h) => <th class="border-b border-hairline py-3 pr-4 font-normal">{h}</th>)}</tr></thead>
+            <tbody>
+              {r.companies.map((c: any) => (
+                <tr class="border-b border-hairline">
+                  <td class="py-3 pr-4">{c.name}</td>
+                  <td class={`py-3 pr-4 font-mono text-xs uppercase ${tone[c.status] ?? ''}`}>{c.status}</td>
+                  {[c.fetched, c.us, c.added, c.removed, c.dead, c.published].map((n) => <td class="py-3 pr-4 font-mono text-xs">{n}</td>)}
+                  <td class="max-w-[280px] truncate py-3 pr-4 text-xs text-muted" title={c.error}>{c.error ?? ''}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+        {r.unclassified?.length > 0 && (
+          <details class="mt-12">
+            <summary class="meta cursor-pointer">Unclassified titles ({r.unclassified.length}), for tuning config/classifier.yaml</summary>
+            <ul class="mt-4 columns-1 gap-8 text-sm text-muted sm:columns-2">{r.unclassified.map((u: any) => <li>{u.title} <span class="meta !text-[0.6rem]">{u.company}</span></li>)}</ul>
+          </details>
+        )}
+      </>
+    )}
+  </section>
+</Base>

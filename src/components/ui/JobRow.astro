@@ -1,0 +1,39 @@
+---
+import CompanyMark from './CompanyMark.astro';
+import Badge from './Badge.astro';
+import { copy } from '@content/copy';
+
+interface Props {
+  href: string;
+  company: string;
+  logo?: string;
+  title: string;
+  location: string;
+  workplace: 'Onsite' | 'Hybrid' | 'Remote';
+  level: string;
+  verifiedAgo: string;
+  isNew?: boolean;
+}
+const p = Astro.props;
+---
+<li class="group relative">
+  <a href={p.href} class="grid grid-cols-[auto_1fr] items-start gap-4 px-4 py-6 transition-colors duration-200 hover:bg-surface sm:grid-cols-[auto_1fr_auto] sm:items-center sm:px-6">
+    <CompanyMark name={p.company} logo={p.logo} />
+    <div class="min-w-0">
+      <p class="flex items-center gap-2 text-sm text-muted">
+        {p.company}
+        {p.isNew && <Badge tone="new">New since last visit</Badge>}
+      </p>
+      <h3 class="mt-1 truncate font-sans text-base font-medium leading-6 tracking-normal text-ink transition-colors duration-200 group-hover:text-accent sm:text-lg">{p.title}</h3>
+      <div class="mt-2 flex flex-wrap items-center gap-2 text-sm text-muted">
+        <span>{p.location}</span>
+        <Badge>{p.workplace}</Badge>
+        <Badge>{p.level}</Badge>
+      </div>
+    </div>
+    <p class="meta col-start-2 flex items-center gap-2 sm:col-start-3 sm:justify-self-end">
+      <span class="inline-block size-1.5 rounded-full bg-live" aria-hidden="true"></span>
+      {copy.verified(p.verifiedAgo)}
+    </p>
+  </a>
+</li>

@@ -1,0 +1,52 @@
+---
+/**
+ * Privacy-friendly, first-party analytics (stored in our own D1 database via /api/e).
+ * - No cookies, no IP addresses, no fingerprinting. A random anonymous id lives in localStorage and
+ *   rotates every 30 days, so "unique visitors" can be counted without knowing who anyone is.
+ * - Global Privacy Control / Do Not Track: nothing is sent at all.
+ * - Optional Cloudflare Web Analytics beacon (page views, referrers, Core Web Vitals) if a token is set.
+ * Track anything from markup with data-track="event" data-track-props='{"company":"stripe"}',
+ * or from code with window.upstreamTrack('event', { … }).
+ */
+import { site } from '@site';
+const cfToken = import.meta.env.PUBLIC_CF_ANALYTICS_TOKEN || site.cfAnalyticsToken || '';
+---
+<script is:inline>
+  (() => {
+    const off = navigator.globalPrivacyControl === true || navigator.doNotTrack === '1' || window.doNotTrack === '1' || /localhost|127\.0\.0\.1/.test(location.hostname) && !location.search.includes('track=1');
+    const rand = () => (crypto.randomUUID ? crypto.randomUUID().replace(/-/g, '').slice(0, 20) : Math.random().toString(36).slice(2, 14));
+    let vid = '', sid = '';
+    try {
+      const v = JSON.parse(localStorage.getItem('upstream:vid') || 'null');
+      if (v && Date.now() - v.t < 30 * 864e5) vid = v.id; else { vid = rand(); localStorage.setItem('upstream:vid', JSON.stringify({ id: vid, t: Date.now() })); }
+      sid = sessionStorage.getItem('upstream:sid') || rand(); sessionStorage.setItem('upstream:sid', sid);
+    } catch (_) { vid = ''; sid = rand(); }
+    const q = [];
+    const flush = () => {
+      if (off || !q.length) return;
+      const body = JSON.stringify({ vid, sid, events: q.splice(0, 20) });
+      if (!(navigator.sendBeacon && navigator.sendBeacon('/api/e', new Blob([body], { type: 'text/plain' })))) {
+        fetch('/api/e', { method: 'POST', body, keepalive: true }).catch(() => {});
+      }
+    };
+    window.upstreamTrack = (e, props) => { if (off) return; q.push({ e, p: location.pathname, props }); if (q.length >= 10) flush(); };
+    q.push({ e: 'page_view', p: location.pathname, ref: document.referrer || undefined });
+    setTimeout(flush, 1500);
+    setInterval(flush, 8000);
+    addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') flush(); });
+    addEventListener('pagehide', flush);
+    document.addEventListener('click', (ev) => {
+      const el = ev.target instanceof Element ? ev.target.closest('[data-track], a[href^="http"]') : null;
+      if (!el) return;
+      if (el.hasAttribute('data-track')) {
+        let props;
+        try { props = JSON.parse(el.getAttribute('data-track-props') || 'null') || undefined; } catch (_) {}
+        window.upstreamTrack(el.getAttribute('data-track'), props);
+      } else if (el.host && el.host !== location.host) {
+        window.upstreamTrack('outbound', { host: el.host });
+      }
+      flush();
+    }, { capture: true });
+  })();
+</script>
+{cfToken && <script defer is:inline src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon={JSON.stringify({ token: cfToken })}></script>}

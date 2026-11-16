@@ -1,0 +1,53 @@
+---
+// The privacy page reflects the live configuration: if an ad network is switched on in
+// config/ads.yaml, the network and cookie sections appear automatically.
+import Base from '@/layouts/Base.astro';
+import { networkEnabled, networkConfig } from '@/lib/ads';
+import { isEnabled } from '@/lib/modules';
+import { site } from '@site';
+const network = isEnabled('ads') && networkEnabled();
+const provider = networkConfig()?.provider === 'adsense' ? 'Google AdSense' : networkConfig()?.provider;
+const updated = 'November 2026';
+---
+<Base title="Privacy" description={`How ${site.name} handles your data: as little as possible.`}>
+  <section class="mx-auto max-w-3xl px-4 pb-24 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>Updated {updated}</p>
+    <h1 class="mt-6 text-[length:var(--t-h1)]">Privacy</h1>
+    <div class="prose-job mt-10">
+      <p>The short version: we collect as little as we can, we never sell anything about you, and you don't need an account.</p>
+      <h2>What stays on your device</h2>
+      <p>Saved roles, your theme, the time of your last visit (for “new since last visit”) and whether you hid the encouragement line are kept in your browser's local storage. They never leave your device. Clear your browser data and they're gone.</p>
+      <h2>What we store when you write to us</h2>
+      <ul>
+        <li><strong>Feedback:</strong> your message, the type you picked, an optional email (only if you want a reply), and whether we may quote your first name.</li>
+        <li><strong>Inside Track:</strong> your tip or referral and the optional name/role/tenure you choose to share. An optional private email is used only to send you a renewal link or ask a question. It is never published.</li>
+      </ul>
+      <p>We <strong>do not store IP addresses</strong>. Spam protection uses Cloudflare Turnstile, which runs a privacy-preserving check without cookies for tracking. Submissions are stored in a Cloudflare D1 database that only the site owner can read. Ask us to delete anything you've sent, any time, through the <a href="/feedback">feedback form</a>.</p>
+      <h2>Analytics</h2>
+      <p>We count visits and a few clicks so we can tell what helps: which pages people read, which companies they apply to through us, and what they search for. How we do it:</p>
+      <ul>
+        <li><strong>First-party and cookie-free.</strong> Events go to our own database, not to an ad or analytics company.</li>
+        <li><strong>Anonymous.</strong> Your browser keeps a random ID (in local storage, not a cookie) that changes every 30 days, so we can count unique visitors without knowing who anyone is. We never store IP addresses, and we keep only "mobile" or "desktop", not your browser's details.</li>
+        <li><strong>What's recorded:</strong> page views (and the referring site's name), Apply clicks (company and role), saves, searches and filters on the job board, Inside Track and feedback submissions, and clicks on sponsored cards and careers links.</li>
+        <li><strong>Your choice wins.</strong> If your browser sends Global Privacy Control or Do Not Track, nothing is recorded at all.</li>
+        <li><strong>Kept 13 months</strong>, then deleted.</li>
+      </ul>
+      <p>We may also use Cloudflare Web Analytics, which is cookie-free and doesn't track you across sites, for page-speed and traffic totals.</p>
+      {network ? (
+        <>
+          <h2>Advertising and cookies</h2>
+          <p>Some pages show ads from {provider}. {provider} and its partners may use cookies or similar technologies to show and measure ads, including personalized ads where the law allows. See <a href="https://policies.google.com/technologies/partner-sites" rel="noopener" target="_blank">how Google uses information from sites that use its services</a>, and manage ad personalization in <a href="https://adssettings.google.com" rel="noopener" target="_blank">Google's ad settings</a>. Where required, we ask for consent before these cookies are set.</p>
+        </>
+      ) : (
+        <>
+          <h2>Advertising and cookies</h2>
+          <p>Sponsored placements here are plain links we host ourselves. No ad network, no tracking pixels and no advertising cookies. If that ever changes, this page will say so before it happens.</p>
+        </>
+      )}
+      <h2>Job listings</h2>
+      <p>Job descriptions belong to the companies that wrote them; we show them as published on their official careers sites, with a link to the original. Companies can <a href="/feedback?type=other&topic=removal">request a correction or removal</a>, and we honor every request.</p>
+      <h2>Contact</h2>
+      <p>Questions about privacy? Use the <a href="/feedback">feedback form</a> and leave an email if you'd like a reply.</p>
+    </div>
+  </section>
+</Base>

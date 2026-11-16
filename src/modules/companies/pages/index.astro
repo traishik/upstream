@@ -1,0 +1,46 @@
+---
+import Base from '@/layouts/Base.astro';
+import CompanyMark from '@/components/ui/CompanyMark.astro';
+import Badge from '@/components/ui/Badge.astro';
+import { loadManifest } from '@/lib/manifest';
+const m = loadManifest();
+const tiers = [
+  { id: 'A', label: 'S&P 500 top 50' },
+  { id: 'B', label: 'Top tech' },
+  { id: 'C', label: 'Leading private companies' },
+];
+---
+<Base title="Companies" description="The companies we follow, with live role counts straight from their official careers pages.">
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>{m.companies.length} companies</p>
+    <h1 class="mt-6 text-[length:var(--t-h1)]">Companies we follow</h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      We read each company's own careers page, never a job board. A few haven't opened their careers feed to us yet;
+      for those we take you straight to the source, and we keep checking.
+    </p>
+    {tiers.map((t) => {
+      const list = m.companies.filter((c) => c.tier === t.id);
+      return (
+        <div class="mt-16">
+          <h2 class="text-[length:var(--t-h2)]">{t.label}</h2>
+          <ul class="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-[var(--radius)] border border-hairline bg-hairline sm:grid-cols-2 lg:grid-cols-3">
+            {list.map((c) => (
+              <li class="bg-bg">
+                <a href={`/companies/${c.slug}/`} class="flex h-full items-center gap-4 p-6 transition-colors duration-200 hover:bg-surface">
+                  <CompanyMark name={c.name} logo={c.logo} />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate font-medium">{c.name}</p>
+                    {c.mode === 'link-only'
+                      ? <p class="meta mt-1 !text-[0.625rem]">Direct to source</p>
+                      : <p class="meta mt-1 !text-[0.625rem] text-ink">{c.count.toLocaleString()} live roles</p>}
+                  </div>
+                  <span aria-hidden="true" class="text-muted">→</span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    })}
+  </section>
+</Base>

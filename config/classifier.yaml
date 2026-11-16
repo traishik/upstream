@@ -1,0 +1,93 @@
+# Job classification rules. Edit here; no code changes needed.
+# Patterns are case-insensitive JavaScript regular expressions, tested against the job title.
+# Order matters: within each section the FIRST matching rule wins.
+# Unclassified titles are logged every run (data/run-report.json → unclassified) so these can be tuned.
+
+functions:
+  - { id: software-engineering,      label: "Software Engineering" }
+  - { id: engineering-management,    label: "Engineering Management" }
+  - { id: product-management,        label: "Product Management" }
+  - { id: program-management,        label: "Program & Project Management" }
+  - { id: data-ai-ml,                label: "Data, AI & ML" }
+  - { id: design-research,           label: "Design & Research" }
+  - { id: hardware-silicon,          label: "Hardware & Silicon" }
+  - { id: security-it,               label: "Security & IT" }
+  - { id: sales-partnerships,        label: "Sales & Partnerships" }
+  - { id: marketing-communications,  label: "Marketing & Communications" }
+  - { id: finance-accounting,        label: "Finance & Accounting" }
+  - { id: legal-policy-compliance,   label: "Legal, Policy & Compliance" }
+  - { id: people-recruiting,         label: "People & Recruiting" }
+  - { id: operations-supply-chain,   label: "Operations & Supply Chain" }
+  - { id: customer-success-support,  label: "Customer Success & Support" }
+  - { id: healthcare-science,        label: "Healthcare, Science & Research" }
+  - { id: manufacturing-trades,      label: "Manufacturing & Skilled Trades" }
+  - { id: other,                     label: "Other" }
+
+levels:
+  - { id: internship,     label: "Internship" }
+  - { id: new-grad,       label: "New Grad / Early Career" }
+  - { id: mid,            label: "Mid" }
+  - { id: senior,         label: "Senior" }
+  - { id: staff,          label: "Staff / Principal" }
+  - { id: manager,        label: "Manager" }
+  - { id: senior-manager, label: "Senior Manager" }
+  - { id: director,       label: "Director" }
+  - { id: vp,             label: "VP & Executive" }
+
+# Function rules: title first; if nothing matches, the same rules run on source hints (department/category).
+functionRules:
+  - [marketing-communications, "product marketing|marketing manager.*product|go-to-market marketing"]
+  - [program-management, "\\b(technical )?program manag|\\bproject manag|\\bTPM\\b|\\bPMO\\b|scrum master|program lead|delivery manager|program director|portfolio manag(?!er,? (investment|fund))"]
+  - [customer-success-support, "technical support|support engineer|customer success|customer support"]
+  - [engineering-management, "engineering manager|manager,? (software|engineering|site reliability|infrastructure|platform|machine learning|data) eng|(director|head|vp|vice president),? (of )?(software )?engineering|software development manager|\\bSDM\\b|engineering lead(er)?\\b.*manag"]
+  - [product-management, "product manag|product owner|product lead|head of product|director,? product(?! marketing)|\\bgroup product|\\bCPO\\b|product management"]
+  - [data-ai-ml, "data scien|machine learning|\\bML\\b|\\bAI\\b|artificial intelligence|deep learning|research scientist|applied scientist|research engineer|data engineer|analytics engineer|data analy|business intelligence|\\bBI\\b|quantitative|\\bquant\\b|statistic|computer vision|\\bNLP\\b|\\bLLM|data platform|data architect|insights analyst|business analyst"]
+  - [security-it, "security|infosec|cyber|\\bSOC\\b|penetration|threat|\\bIAM\\b|identity and access|IT support|help ?desk|service desk|desktop support|system administrator|sysadmin|IT (manager|specialist|analyst|engineer|technician)|network (engineer|administrator)|\\bIT\\b"]
+  - [hardware-silicon, "hardware|silicon|\\bASIC|\\bSoC\\b|\\bFPGA|\\bRTL\\b|\\bCPU\\b|\\bGPU (architect|design)|physical design|design verification|\\bDV\\b|analog|mixed[- ]signal|\\bRF\\b|chip|semiconductor|process engineer|yield|lithograph|etch|packaging engineer|electrical engineer|mechanical engineer|firmware|embedded|avionics|propulsion|structures engineer|aerospace engineer|thermal engineer|optical engineer|photonics|board design|PCB|test engineer|(?<!site )reliability engineer|manufacturing engineer|validation engineer|systems engineer"]
+  - [design-research, "designer|\\bUX\\b|\\bUI\\b|user experience|user research|ux research|design (lead|manager|director)|creative director|art director|content design|design systems|visual design|illustrat|animator|motion design|\\bdesign\\b"]
+  - [software-engineering, "software|developer|\\bSWE\\b|\\bSDE\\b|site reliability|\\bSRE\\b|devops|dev ops|front[- ]?end|back[- ]?end|full[- ]?stack|mobile engineer|\\biOS\\b|android|web engineer|platform engineer|infrastructure engineer|cloud engineer|\\bQA\\b|quality engineer|test automation|SDET|engineer(ing)? (I|II|III|IV|1|2|3)\\b|solutions architect|software architect|programmer|\\bengineer\\b"]
+  - [sales-partnerships, "sales|account executive|\\bAE\\b|account manag|business development|\\bBDR\\b|\\bSDR\\b|partnership|partner manag|alliances|channel manag|solutions consultant|presales|pre-sales|territory|relationship manager|client (partner|executive|director)|banker|financial advisor|wealth|private bank|merchant growth|seller growth|advertis(ing|er) (sales|solutions)"]
+  - [marketing-communications, "marketing|communications|\\bcomms\\b|public relations|\\bPR\\b|brand|content (strategist|marketing|writer|creator)|copywriter|social media|growth marketing|demand gen|campaign|events? (manager|marketing)|creative|editor|writer"]
+  - [finance-accounting, "financ|accounting|accountant|\\bFP&A\\b|\\bFP\\&A\\b|tax|treasury|audit|controller|payroll|billing|revenue (accounting|operations)|investment|portfolio manager|trader|trading|actuar|underwrit|credit (analyst|risk)|risk (analyst|manager)|equity research|capital markets|\\bmarkets\\b|investment bank|\\bM&A\\b|\\bCFO\\b"]
+  - [legal-policy-compliance, "legal|counsel|attorney|lawyer|paralegal|compliance|policy|regulatory|privacy|government affairs|public affairs|ethics|contracts manager|intellectual property|patent"]
+  - [people-recruiting, "recruit|talent|sourcer|people (partner|operations|business|team)|\\bHR\\b|human resources|HRBP|benefits|compensation|total rewards|learning and development|\\bL&D\\b|employee (experience|relations)|workplace|DEI|inclusion"]
+  - [customer-success-support, "customer success|customer support|customer service|customer experience|client services|support (engineer|specialist|agent|associate|analyst)|technical support|technical account manager|\\bTAM\\b|implementation|onboarding|solutions engineer|field (application|service) engineer|escalation|aftersales|resolution|care (specialist|associate)"]
+  - [operations-supply-chain, "operations|supply chain|logistics|procurement|sourcing|purchasing|buyer|planner|planning|inventory|fulfillment|warehouse|distribution|transportation|fleet|delivery|facilities|real estate|strategy|business operations|bizops|chief of staff|program operations|vendor manag|trust (and|&) safety|content moderat|analyst"]
+  - [healthcare-science, "nurse|\\bRN\\b|clinical|physician|pharmac|medical|health|biolog|chemist|chemistry|scientist|laborator|\\blab\\b|research associate|toxicolog|patholog|epidemiolog|therapist|dental|veterinar|biostat|scientific|R&D"]
+  - [manufacturing-trades, "technician|machinist|assembl|welder|electrician|mechanic|maintenance|manufacturing|production|operator|fabricat|\\bCNC\\b|quality inspector|inspector|plumber|\\bHVAC\\b|carpenter|construction|skilled trade|line (lead|worker)|crane|forklift|millwright|integration"]
+
+# Level rules: first match wins. Company overrides (below) run first for that company.
+levelRules:
+  - [internship, "\\bintern(ship)?s?\\b|\\bco-?op\\b|summer (20\\d\\d|analyst|associate)|apprentice|\\bexternship|fellowship program|student (worker|researcher)|\\bPhD (intern|residency)"]
+  - [new-grad, "new grad|university (grad|graduate|hire)|college grad|recent grad|graduate (program|engineer|scheme)|early[- ]career|entry[- ]level|\\bcampus\\b|\\bjunior\\b|\\bjr\\.?\\b|\\bassociate (software|engineer|product manager)|rotational|\\b(engineer|developer|analyst|scientist|designer|specialist) (I|1)\\b(?! ?[IV])|\\b(I|1)$|residency|\\b20\\d\\d (start|graduate)"]
+  - [vp, "\\b(s?vp|evp)\\b|vice president|\\bchief\\b|\\bC[TEOFIMP]O\\b|\\bpresident\\b|general manager|\\bGM\\b|managing director|partner, |executive director|\\bhead of\\b.*(global|worldwide)"]
+  - [director, "director|\\bhead of\\b|\\bhead,"]
+  - [senior-manager, "senior manager|group product manager|sr\\.? manager|group manager|(?<!(program|product|project|account|marketing|success|relationship) )manager (II|2|III|3)\\b|senior (engineering|software development|product design) manager|principal manager"]
+  - [staff, "\\bstaff\\b|principal|distinguished|\\bfellow\\b|\\bL[7-9]\\b|\\b(IV|V|VI)\\b|\\b(4|5)$|architect"]
+  - [senior, "senior|\\bsr\\.?\\b|\\blead\\b|\\b(III|3)\\b|\\bL6\\b|expert|specialist (III|3)"]
+  - [manager, "\\bmanager\\b|\\bsupervisor\\b|team lead"]
+  - [mid, "\\b(II|2)\\b|\\bL[45]\\b|.*"]
+
+# Titles with "manager" that are individual-contributor roles. They don't count as people managers;
+# their level comes from seniority words (Senior → senior, Principal → staff, otherwise mid).
+icManagerTitles: "product manag|program manag|project manag|account manag|relationship manag|marketing manag|partner manag|channel manag|community manag|case manag|success manag|territory manag|portfolio manag|technical account|solutions manag|vendor manag|category manag|brand manag|content manag|event manag|data manag|release manag|risk manag|operations manag|business manag|merchant growth|seller growth"
+
+# Per-company level overrides (banks use corporate titles that aren't management levels).
+companyLevelOverrides:
+  banks:
+    companies: [jpmorgan-chase, bank-of-america, citigroup, goldman-sachs, morgan-stanley, wells-fargo, american-express]
+    rules:
+      - [vp, "managing director|senior vice president|\\bSVP\\b"]
+      - [director, "executive director|\\bED\\b|director"]
+      - [senior, "vice president|\\bVP\\b|\\bAVP\\b|assistant vice president"]
+      - [mid, "\\bassociate\\b(?! banker)"]
+      - [new-grad, "\\banalyst\\b(?!.*(senior|sr|lead|II|III))"]
+
+employmentRules:
+  - [internship, "\\bintern|co-?op|apprentice"]
+  - [contract, "contract|contractor|temporary|\\btemp\\b|fixed[- ]term|seasonal|freelance|consultant \\(contract\\)"]
+  - [part-time, "part[- ]?time|parttime|\\bPT\\b|\\(\\d{1,2} hours\\)"]
+  - [full-time, ".*"]
+
+# Frontline / hourly roles. Hidden unless config/pipeline.yaml → includeFrontline: true.
+frontlineRules: "store (associate|manager|lead|team|supervisor)|retail (associate|specialist|sales)|sales associate|cashier|\\bcrew\\b|barista|\\bcook\\b|dishwasher|server\\b|host(ess)?\\b|warehouse (associate|worker|team member)|fulfillment (associate|center associate)|package handler|picker|packer|sorter|stocker|forklift|material handler|delivery (driver|associate|station)|\\bdriver\\b|courier|\\bteller\\b|associate banker|personal banker|branch (manager|associate)|call center|contact center|customer service representative|customer care representative|\\bCSR\\b|front desk|receptionist|janitor|custodian|cleaner|housekeep|security officer|guard\\b|shift (lead|supervisor|manager)|department (supervisor|manager)|\\bspecialist: seasonal|US - specialist|\\bUS - (expert|technical specialist|genius|creative|business expert)|pharmacy technician|patient care|certified nursing assistant|\\bCNA\\b|seasonal|order filler|loader|unloader|freight|overnight|merchandis|replenish|cart attendant|deli|bakery|meat cutter|produce|optician|tire (technician|installer)|automotive technician|lube technician|production associate|assembly associate|manufacturing associate|operator (I|II|1|2)\\b|technician (I|1)\\b"

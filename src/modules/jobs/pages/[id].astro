@@ -1,0 +1,45 @@
+---
+// Pre-rendered pages for the newest roles (SEO). Every other role renders at /jobs/view/?id=…
+import Base from '@/layouts/Base.astro';
+import JobDetail from '@/modules/jobs/components/JobDetail.tsx';
+import SaveIsland from '@/modules/jobs/components/SaveIsland.tsx';
+import { loadJob, loadManifest } from '@/lib/manifest';
+
+export function getStaticPaths() {
+  const m = loadManifest();
+  const names = Object.fromEntries(m.companies.map((c) => [c.slug, c.name]));
+  const fnLabels = Object.fromEntries(m.functions.map((f) => [f.id, f.label]));
+  return m.newest
+    .map((r) => loadJob(r.i))
+    .filter((j) => j !== undefined)
+    .map((job) => ({ params: { id: job.id }, props: { job, companyName: names[job.company] ?? job.company, functionLabel: fnLabels[job.function] ?? job.function } }));
+}
+const { job, companyName, functionLabel } = Astro.props;
+// Keep <title> under ~60 characters so Google shows it in full.
+const full = `${job.title} at ${companyName}`;
+const pageTitle = full.length <= 48 ? full : job.title.length <= 46 ? job.title : `${job.title.slice(0, 44).trimEnd()}…`;
+const plain = (job.descriptionHtml ?? '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
+const jsonLd = {
+  '@context': 'https://schema.org/', '@type': 'JobPosting', title: job.title, datePosted: job.postedAt ?? job.firstSeenAt,
+  hiringOrganization: { '@type': 'Organization', name: companyName }, description: job.descriptionHtml ?? job.title,
+  employmentType: { 'full-time': 'FULL_TIME', 'part-time': 'PART_TIME', internship: 'INTERN', contract: 'CONTRACTOR' }[job.employmentType],
+  jobLocation: job.locations.slice(0, 5).map((l) => ({ '@type': 'Place', address: { '@type': 'PostalAddress', addressLocality: l, addressCountry: 'US' } })),
+  ...(job.workplace === 'remote' ? { jobLocationType: 'TELECOMMUTE', applicantLocationRequirements: { '@type': 'Country', name: 'USA' } } : {}),
+  directApply: false, url: job.applyUrl,
+};
+import { isEnabled as adsOn } from '@/lib/modules';
+import { pick as pickAd } from '@/lib/ads';
+const adChoice = adsOn('ads') ? pickAd('detail') : null;
+const detailAd = adChoice?.creative ?? null;
+---
+<Base title={pageTitle} description={plain.slice(0, 155) || `${job.title} at ${companyName}`}>
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-12 sm:px-8">
+    <a href="/jobs" class="meta hover:text-ink">← All roles</a>
+    <div class="mt-8">
+      <JobDetail job={job} companyName={companyName} functionLabel={functionLabel} interactive={false} ad={detailAd}>
+        <SaveIsland slot="saveSlot" client:idle id={job.id} title={job.title} company={job.company} />
+      </JobDetail>
+    </div>
+  </section>
+</Base>

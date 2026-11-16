@@ -1,0 +1,67 @@
+---
+/**
+ * Progressive enhancement for [data-api-form] forms: they work as plain POSTs without JavaScript
+ * (the function redirects back with ?sent=1 or ?error=…); with JavaScript they submit in place.
+ * Also loads Cloudflare Turnstile once, only on pages that have such a form.
+ */
+---
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<script>
+  const MESSAGES: Record<string, string> = {
+    'verification': 'We couldn’t confirm you’re human. Please try the check again.',
+    'slow-down': 'That’s a lot of notes in a minute. Please wait a moment and try again.',
+    'too-large': 'That’s a little long. Please shorten it and try again.',
+    'message': 'Please write a short message.',
+    'email': 'That email doesn’t look right.',
+    'type': 'Please choose what your note is about.',
+    'company': 'Please choose a company from the list.',
+    'tip-or-referral': 'Add a tip, a referral link, or both.',
+    'tip-too-short': 'Tips need at least a sentence (20+ characters).',
+    'referral-domain': 'Referral links must be on the company’s own careers site or its official job board.',
+    'contact-details': 'Please leave out email addresses and phone numbers. Public notes can’t include contact details.',
+    'confirm': 'Please confirm the checkbox at the bottom.',
+  };
+  const explain = (codes: string) => codes.split(',').map((c) => MESSAGES[c] ?? 'Something went wrong. Please try again.').join(' ');
+
+  // No-JS round trip: show the result passed back in the URL.
+  const params = new URLSearchParams(location.search);
+  document.querySelectorAll<HTMLFormElement>('form[data-api-form]').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('[data-form-status]');
+    const show = (ok: boolean, text: string) => {
+      if (!status) return;
+      status.textContent = text;
+      status.dataset.state = ok ? 'ok' : 'error';
+      status.hidden = false;
+      status.focus();
+    };
+    if (params.get('sent')) show(true, form.dataset.success ?? 'Thank you.');
+    if (params.get('error')) show(false, explain(params.get('error')!));
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector<HTMLButtonElement>('button[type=submit]');
+      if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent ?? ''; btn.textContent = 'Sending…'; }
+      try {
+        const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+        const data = await res.json().catch(() => ({ ok: false, error: 'unknown' }));
+        if (data.ok) {
+          form.reset();
+          show(true, data.message ?? form.dataset.success ?? 'Thank you.');
+          (window as any).upstreamTrack?.(form.action.includes('/api/insiders') ? 'insider_submit' : 'feedback_submit');
+        } else {
+          show(false, explain(String(data.error ?? 'unknown')));
+        }
+      } catch {
+        show(false, 'We couldn’t reach the server. Please check your connection and try again.');
+      } finally {
+        (window as any).turnstile?.reset?.();
+        if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label ?? 'Send'; }
+      }
+    });
+  });
+</script>
+<style is:global>
+  [data-form-status] { border: 1px solid var(--c-hairline); border-radius: var(--radius); padding: 1rem 1.25rem; font-size: 0.875rem; }
+  [data-form-status][data-state='ok'] { border-color: var(--c-live); color: var(--c-text); }
+  [data-form-status][data-state='error'] { border-color: var(--c-accent); color: var(--c-text); }
+</style>

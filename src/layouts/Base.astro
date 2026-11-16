@@ -1,0 +1,108 @@
+---
+import '@fontsource-variable/geist';
+import '@fontsource-variable/geist-mono';
+// Bodoni Moda with its optical-size axis: hairlines get finer as headlines get larger.
+import '@fontsource-variable/bodoni-moda/opsz.css';
+import '@fontsource-variable/bodoni-moda/opsz-italic.css';
+import '@/styles/global.css';
+import { site, modules } from '@site';
+import ThemeToggle from '@/components/ui/ThemeToggle.astro';
+import { isEnabled } from '@/lib/modules';
+import Analytics from '@/components/ui/Analytics.astro';
+import { loadManifest } from '@/lib/manifest';
+const gen = loadManifest().generatedAt;
+const refreshed = new Date(gen).getTime() > 0 ? new Date(gen).toUTCString().replace(/:\d\d GMT$/, " UTC") : "pending first run";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const { title, description = site.tagline, noindex = false } = Astro.props;
+const fullTitle = title ? `${title} · ${site.name}` : `${site.name}: ${site.tagline}`;
+const nav = modules
+  .filter((m) => m.enabled && m.navLabel)
+  .sort((a, b) => (a.navOrder ?? 99) - (b.navOrder ?? 99));
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const googleVerification = import.meta.env.PUBLIC_GOOGLE_SITE_VERIFICATION || '';
+---
+<!doctype html>
+<html lang="en" data-serif={site.displaySerif}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site)} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL('/og.png', Astro.site)} />
+    {googleVerification && <meta name="google-site-verification" content={googleVerification} />}
+    <meta name="theme-color" content="#F6F2EA" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      // Apply the saved theme before first paint (no flash). Storage can be unavailable; that's fine.
+      try {
+        const t = localStorage.getItem('upstream:theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (_) {}
+    </script>
+    <slot name="head" />
+  </head>
+  <body class="flex min-h-dvh flex-col">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-surface focus:px-4 focus:py-2">Skip to content</a>
+    <header class="border-b border-hairline">
+      <div class="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-4 sm:px-8">
+        <a href="/" class="font-serif text-2xl font-light tracking-tight" aria-label={`${site.name} home`}>
+          {site.name}<span class="text-accent">.</span>
+        </a>
+        <nav aria-label="Primary" class="flex items-center gap-4 sm:gap-8">
+          <ul class="hidden items-center gap-6 text-sm text-muted md:flex lg:gap-8">
+            {nav.map((m) => (
+              <li><a href={`/${m.id}`} class="transition-colors duration-200 hover:text-ink" aria-current={Astro.url.pathname.startsWith(`/${m.id}`) ? "page" : undefined}>{m.navLabel}</a></li>
+            ))}
+            {isEnabled('jobs') && <li><a href="/saved" class="transition-colors duration-200 hover:text-ink">Saved</a></li>}
+          </ul>
+          <ThemeToggle />
+          <details class="relative md:hidden">
+            <summary class="meta flex h-8 cursor-pointer list-none items-center rounded-full border border-hairline px-3">Menu</summary>
+            <ul class="absolute right-0 z-20 mt-2 w-48 rounded-[var(--radius)] border border-hairline bg-surface p-2 text-sm shadow-sm">
+              {nav.map((m) => <li><a href={`/${m.id}`} class="block rounded-[var(--radius)] px-3 py-2 hover:bg-surface-2">{m.navLabel}</a></li>)}
+              {isEnabled('jobs') && <li><a href="/saved" class="block rounded-[var(--radius)] px-3 py-2 hover:bg-surface-2">Saved</a></li>}
+            </ul>
+          </details>
+        </nav>
+      </div>
+    </header>
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+    <footer class="border-t border-hairline">
+      <div class="mx-auto flex max-w-6xl flex-col gap-4 px-4 py-8 text-sm text-muted sm:flex-row sm:items-center sm:justify-between sm:px-8">
+        <div class="flex flex-col gap-2">
+          <p>{site.name}. Built by a job seeker, for job seekers.</p>
+          <p class="meta !text-[0.625rem]">Data refreshed {refreshed}</p>
+        </div>
+        <ul class="flex flex-wrap gap-x-6 gap-y-2">
+          {isEnabled('about') && <li><a class="hover:text-ink" href="/about">About</a></li>}
+          {isEnabled('feedback') && <li><a class="hover:text-ink" href="/feedback">Feedback</a></li>}
+          {isEnabled('ads') && <li><a class="hover:text-ink" href="/advertise">Advertise</a></li>}
+          <li><a class="hover:text-ink" href="/privacy">Privacy</a></li>
+          <li><a class="hover:text-ink" href="/feedback?type=other&topic=removal">Companies: request a correction or removal</a></li>
+          <li><a class="hover:text-ink" href="/feedback">Got an idea? We read every note.</a></li>
+        </ul>
+      </div>
+    </footer>
+    <Analytics />
+  </body>
+</html>

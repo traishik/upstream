@@ -1,0 +1,27 @@
+---
+/** Dark ⇄ light. Dark is the default; the choice is remembered locally when storage allows. */
+---
+<button
+  type="button"
+  data-theme-toggle
+  class="meta inline-flex h-8 items-center gap-2 rounded-full border border-hairline px-3 transition-colors duration-200 hover:border-hairline-strong hover:text-ink"
+  aria-label="Switch color theme"
+>
+  <span aria-hidden="true" class="inline-block size-2 rounded-full bg-accent"></span>
+  <span data-theme-label>Theme</span>
+</button>
+<script>
+  const root = document.documentElement;
+  const label = () => (root.dataset.theme === 'dark' ? 'Evening' : 'Ivory');
+  document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]').forEach((btn) => {
+    const text = btn.querySelector('[data-theme-label]');
+    if (text) text.textContent = label();
+    btn.addEventListener('click', () => {
+      const next = root.dataset.theme === 'dark' ? 'light' : 'dark';
+      root.dataset.theme = next;
+      try { localStorage.setItem('upstream:theme', next); } catch (_) {}
+      (window as any).upstreamTrack?.('theme', { theme: next });
+      if (text) text.textContent = label();
+    });
+  });
+</script>

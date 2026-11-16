@@ -1,0 +1,22 @@
+---
+import CompanyMark from './CompanyMark.astro';
+import Badge from './Badge.astro';
+import { copy } from '@content/copy';
+interface Props { company: string; careersUrl: string; logo?: string; variant?: 'primary' | 'alt' }
+const { company, careersUrl, logo, variant = 'primary' } = Astro.props;
+---
+<article class="flex flex-col gap-6 rounded-[var(--radius)] border border-hairline bg-surface p-6 sm:p-8">
+  <div class="flex items-center justify-between gap-4">
+    <CompanyMark name={company} logo={logo} size="lg" />
+    <Badge tone="accent">{copy.linkOnly.badge}</Badge>
+  </div>
+  <div>
+    <h3 class="text-[length:var(--t-h3)]">{copy.linkOnly.title(company)}</h3>
+    <p class="mt-3 text-sm leading-6 text-muted">
+      {variant === 'primary' ? copy.linkOnly.body(company) : copy.linkOnly.alt(company)}
+    </p>
+  </div>
+  <a href={careersUrl} target="_blank" rel="noopener" class="link w-fit text-sm" data-track="careers_click" data-track-props={JSON.stringify({ company })}>
+    {copy.linkOnly.cta(company)} →<span class="sr-only"> (opens in a new tab)</span>
+  </a>
+</article>

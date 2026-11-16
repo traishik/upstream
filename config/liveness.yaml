@@ -1,0 +1,23 @@
+# Apply-link verification rules. A job is shown only if it is in the company's latest feed AND
+# its apply link passed a check within the last ~40h (see config/pipeline.yaml → liveness).
+
+# Text on a page that means the posting is gone. Case-insensitive regexes.
+deadPatterns:
+  - "no longer (accepting applications|available|open|active|being accepted)"
+  - "(job|position|posting|requisition|opening) (is |has been )?(no longer|closed|filled|expired|removed|not found|unavailable)"
+  - "(this|the) (job|position|role|posting) (you are looking for |you're looking for )?(is no longer|has expired|has been filled|was not found|could not be found|doesn't exist|does not exist)"
+  - "we couldn['’]t find (that|this|the) (job|position|page)"
+  - "the page you (are|were|’re|'re) looking for (can(no|['’])t be found|does(n['’]|( no))t exist|is no longer)"
+  - "applications? (for this (job|role|position) )?(are|is) closed"
+  - "job not found"
+
+# A redirect that lands on one of these (and no longer mentions the job id) is a dead posting.
+genericLandingPatterns:
+  - "/(jobs|careers|search|search-jobs|job-search|opportunities)/?(\\?.*)?$"
+  - "[?&](error|notfound|jobnotfound)=(true|1)"
+  - "/(404|not-found|error)(/|$|\\?)"
+
+# Sources whose job pages are JavaScript apps: the page HTML is the same shell for live and dead
+# jobs, so text patterns don't work there. These are verified through the same official API the
+# careers site uses (per-job endpoint) instead of the HTML page.
+apiVerified: [workday, oracle, rippling, tiktok, ashby]

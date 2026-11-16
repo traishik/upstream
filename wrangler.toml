@@ -1,0 +1,15 @@
+# Cloudflare Pages project. Setup steps are in README → "Cloudflare setup".
+name = "upstreamjobs"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-11-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "upstream"
+database_id = "f0972528-23f4-4371-97ec-57b64461e996"
+migrations_dir = "migrations"
+
+[vars]
+# Turnstile site key (public). The secret is set with `wrangler pages secret put TURNSTILE_SECRET`.
+TURNSTILE_SITE_KEY = "0x4AAAAAAGCwElHHNvKy2G4y"
+# TURNSTILE_SECRET is a secret: `npx wrangler pages secret put TURNSTILE_SECRET` (locally: .dev.vars)

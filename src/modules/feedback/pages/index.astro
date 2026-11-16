@@ -1,0 +1,53 @@
+---
+import Base from '@/layouts/Base.astro';
+import FeedbackForm from '@/components/ui/FeedbackForm.astro';
+import { Content as Changelog } from '@content/changelog.md';
+---
+<Base title="Feedback" description="Ideas, bugs, missing companies: we read every note.">
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <div class="grid gap-16 lg:grid-cols-[1fr_380px]">
+      <div>
+        <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>We read every note</p>
+        <h1 class="mt-6 text-[length:var(--t-h1)]" data-feedback-title>Tell us what would help</h1>
+        <p class="mt-4 max-w-2xl text-muted" data-feedback-intro>An idea, a bug, a company we're missing, or just a kind word. This site gets better because people like you speak up.</p>
+        <div class="mt-12"><FeedbackForm /></div>
+      </div>
+      <aside id="shipped">
+        <p class="meta">You asked, we shipped</p>
+        <div class="prose-job changelog mt-6"><Changelog /></div>
+      </aside>
+    </div>
+  </section>
+  <script>
+    // Deep links (?type=missing-company, ?topic=removal, ?topic=inside-track&company=…, ?job=…, ?report=…)
+    // pre-fill the form so people don't have to explain where they came from.
+    const p = new URLSearchParams(location.search);
+    const form = document.querySelector<HTMLFormElement>('form[data-api-form]');
+    if (form) {
+      const type = p.get('type');
+      if (type) form.querySelector<HTMLInputElement>(`input[name=type][value="${CSS.escape(type)}"]`)?.click();
+      for (const k of ['topic', 'company', 'job', 'report']) {
+        const v = p.get(k);
+        if (!v) continue;
+        const input = Object.assign(document.createElement('input'), { type: 'hidden', name: k, value: v.slice(0, 80) });
+        form.append(input);
+      }
+      const msg = form.querySelector<HTMLTextAreaElement>('textarea[name=message]');
+      const title = document.querySelector('[data-feedback-title]');
+      const intro = document.querySelector('[data-feedback-intro]');
+      const topic = p.get('topic');
+      if (topic === 'removal') {
+        if (title) title.textContent = 'Corrections and removals';
+        if (intro) intro.textContent = 'Representing a company? Tell us what to correct or remove, and how to reach you. We honor every removal request.';
+        if (msg) msg.placeholder = 'Company, the page or role, and what you’d like changed or removed.';
+      } else if (topic === 'inside-track') {
+        if (msg) msg.placeholder = 'Your tip or referral, and which company it’s for.';
+      } else if (p.get('report')) {
+        if (title) title.textContent = 'Report a note';
+        if (msg) msg.placeholder = 'What’s wrong with it? Thanks for helping keep this place trustworthy.';
+      } else if (type === 'missing-company' && msg) {
+        msg.placeholder = 'Which company should we add? A link to their careers page helps.';
+      }
+    }
+  </script>
+</Base>

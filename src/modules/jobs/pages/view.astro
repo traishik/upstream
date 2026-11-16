@@ -1,0 +1,18 @@
+---
+import Base from '@/layouts/Base.astro';
+import DetailLoader from '@/modules/jobs/components/DetailLoader.tsx';
+import { loadManifest } from '@/lib/manifest';
+const m = loadManifest();
+const names = Object.fromEntries(m.companies.map((c) => [c.slug, c.name]));
+const functionLabels = Object.fromEntries(m.functions.map((f) => [f.id, f.label]));
+import { isEnabled as adsOn } from '@/lib/modules';
+import { pick as pickAd } from '@/lib/ads';
+const adChoice = adsOn('ads') ? pickAd('detail') : null;
+const detailAd = adChoice?.creative ?? null;
+---
+<Base title="Role" noindex>
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-12 sm:px-8">
+    <a href="/jobs" class="meta hover:text-ink">← All roles</a>
+    <div class="mt-8"><DetailLoader client:load names={names} functionLabels={functionLabels} ad={detailAd} /></div>
+  </section>
+</Base>

@@ -1,0 +1,56 @@
+---
+import { site } from '@site';
+/**
+ * Feedback form. Posts to the /api/feedback Pages Function (D1 + Turnstile).
+ * `demo` renders it inert (used on /styleguide).
+ */
+import FormEnhancer from './FormEnhancer.astro';
+interface Props { demo?: boolean; preset?: Record<string, string> }
+const { demo = false, preset = {} } = Astro.props;
+const types = [['idea', 'Idea'], ['bug', 'Bug'], ['missing-company', 'Missing company'], ['praise', 'Praise'], ['other', 'Other']];
+const selected = types.some(([v]) => v === preset.type) ? preset.type : 'idea';
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || site.turnstileSiteKey;
+const field = 'w-full rounded-[var(--radius)] border border-hairline bg-surface px-4 text-sm text-ink placeholder:text-muted transition-colors duration-200 hover:border-hairline-strong focus:border-accent focus:outline-none';
+---
+<form class="flex max-w-xl flex-col gap-8" method="post" action="/api/feedback" data-api-form={demo ? undefined : ''} data-success="Thank you. We read every note.">
+  <p data-form-status role="status" tabindex="-1" hidden></p>
+  <fieldset>
+    <legend class="meta mb-3">What's on your mind?</legend>
+    <div class="flex flex-wrap gap-2">
+      {types.map(([v, t]) => (
+        <label class="cursor-pointer">
+          <input type="radio" name="type" value={v} class="peer sr-only" checked={v === selected} />
+          <span class="inline-flex h-9 items-center rounded-full border border-hairline px-4 text-sm text-muted transition-colors duration-200 peer-checked:border-accent peer-checked:text-accent peer-focus-visible:outline peer-focus-visible:outline-1 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--c-focus)] hover:text-ink">{t}</span>
+        </label>
+      ))}
+    </div>
+  </fieldset>
+  <label class="block">
+    <span class="meta mb-2 block">Message</span>
+    <textarea name="message" required minlength="3" maxlength="2000" rows="5" class={`${field} py-3 leading-6`} placeholder={preset.placeholder ?? 'Tell us what would make this better for you.'}></textarea>
+    <span class="meta mt-2 block !text-[0.625rem]">Up to 2,000 characters</span>
+  </label>
+  <label class="block">
+    <span class="meta mb-2 block">Email <span class="normal-case tracking-normal">(optional, only if you'd like a reply)</span></span>
+    <input type="email" name="email" maxlength="254" autocomplete="email" class={`${field} h-12`} placeholder="you@example.com" />
+  </label>
+  <label class="flex cursor-pointer items-start gap-3 text-sm text-muted">
+    <input type="checkbox" name="quote" class="mt-1 size-4 accent-[var(--c-accent)]" />
+    <span>You can quote me (first name only) in “You asked, we shipped.”</span>
+  </label>
+  {['topic', 'company', 'job', 'report'].map((k) => preset[k] && <input type="hidden" name={k} value={preset[k]} />)}
+  <!-- Honeypot: hidden from people, tempting to bots. -->
+  <div aria-hidden="true" class="absolute -left-[9999px] h-px w-px overflow-hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+  {demo ? (
+    <div class="flex h-[65px] w-[300px] max-w-full items-center justify-center rounded-[var(--radius)] border border-dashed border-hairline-strong"><span class="meta">Turnstile check</span></div>
+  ) : (
+    <div class="cf-turnstile min-h-[65px]" data-sitekey={siteKey} data-theme="auto"></div>
+  )}
+  <div class="flex flex-wrap items-center gap-4">
+    <button type="submit" disabled={demo} class="inline-flex h-12 items-center rounded-full bg-accent-fill px-8 text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-accent-fill-strong disabled:cursor-not-allowed disabled:opacity-60">
+      Send feedback
+    </button>
+    <p class="text-xs text-muted">No tracking. We never store IP addresses.</p>
+  </div>
+</form>
+{!demo && <FormEnhancer />}

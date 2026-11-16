@@ -1,0 +1,117 @@
+# Company registry: one entry per company. Adding or removing a company is a one-line change
+# (or flip `enabled`). Each company appears once and keeps the first tier it matches.
+#
+# Fields
+#   name, slug, tier (A|B|C), careersUrl (company's own careers homepage)
+#   mode:    fetch | link-only        (link-only: shown on /companies with a direct link, no listings)
+#   source:  greenhouse | lever | ashby | workday | oracle | amazon | apple | tiktok | amd | rippling | snap
+#   board / host / tenant / site / siteNumber: source-specific identifiers
+#   proofUrl: the company page that links to / embeds this exact board (source rule 4.1)
+#   proof:   confirmed | pending      (pending = confirm by viewing the careers page in a browser)
+#   logo:    path under /public/logos (monogram fallback if missing)
+#   enabled: false removes the company everywhere
+#   notes
+#
+# Source facts come from the Phase 0 discovery spike (docs/phase-0-discovery.md), 2026-11-14/15.
+
+companies:
+  # ─── Tier A: S&P 500 top 50 by market cap ────────────────────────────────────────────────
+  - { name: NVIDIA, slug: nvidia, tier: A, careersUrl: "https://www.nvidia.com/en-us/about-nvidia/careers/", mode: fetch, source: workday, host: nvidia.wd5.myworkdayjobs.com, tenant: nvidia, site: NVIDIAExternalCareerSite, proofUrl: "https://www.nvidia.com/en-us/about-nvidia/careers/", proof: pending, enabled: true }
+  - { name: Alphabet (Google), slug: google, tier: A, careersUrl: "https://www.google.com/about/careers/applications/", mode: link-only, enabled: true, notes: "robots.txt disallows /about/careers/applications/jobs/results" }
+  - { name: Apple, slug: apple, tier: A, careersUrl: "https://jobs.apple.com/en-us/search?location=united-states-USA", mode: fetch, source: apple, proofUrl: "https://www.apple.com/careers/us/", proof: confirmed, enabled: true, notes: "Server-rendered JSON on jobs.apple.com; Med reliability" }
+  - { name: Microsoft, slug: microsoft, tier: A, careersUrl: "https://careers.microsoft.com/", mode: link-only, enabled: true, notes: "Eightfold host robots: Disallow /" }
+  - { name: Amazon, slug: amazon, tier: A, careersUrl: "https://www.amazon.jobs/en/", mode: fetch, source: amazon, proofUrl: "https://www.amazon.jobs/en/", proof: confirmed, enabled: true }
+  - { name: Broadcom, slug: broadcom, tier: A, careersUrl: "https://www.broadcom.com/company/careers", mode: fetch, source: workday, host: broadcom.wd1.myworkdayjobs.com, tenant: broadcom, site: External_Career, proofUrl: "https://www.broadcom.com/company/careers", proof: pending, enabled: true }
+  - { name: Tesla, slug: tesla, tier: A, careersUrl: "https://www.tesla.com/careers", mode: link-only, enabled: true, notes: "403 to all automated requests, including robots.txt" }
+  - { name: Meta, slug: meta, tier: A, careersUrl: "https://www.metacareers.com/jobs", mode: link-only, enabled: true, notes: "Terms prohibit automated collection" }
+  - { name: Walmart, slug: walmart, tier: A, careersUrl: "https://careers.walmart.com/", mode: fetch, source: workday, host: walmart.wd5.myworkdayjobs.com, tenant: walmart, site: TBD, proof: pending, enabled: false, notes: "Owner OK'd Workday route. Site ID unresolved (WalmartExternal → 422); find via browser" }
+  - { name: Berkshire Hathaway, slug: berkshire-hathaway, tier: A, careersUrl: "https://www.berkshirehathaway.com/", mode: link-only, enabled: false, notes: "Holding company; no single careers page" }
+  - { name: Eli Lilly, slug: eli-lilly, tier: A, careersUrl: "https://careers.lilly.com/us/en", mode: fetch, source: workday, host: lilly.wd5.myworkdayjobs.com, tenant: lilly, site: TBD, proof: pending, enabled: false, notes: "Workday site ID unresolved" }
+  - { name: JPMorgan Chase, slug: jpmorgan-chase, tier: A, careersUrl: "https://www.jpmorganchase.com/careers", mode: fetch, source: oracle, host: jpmc.fa.oraclecloud.com, siteNumber: CX_1001, proofUrl: "https://www.jpmorganchase.com/careers", proof: confirmed, enabled: true }
+  - { name: Micron, slug: micron, tier: A, careersUrl: "https://careers.micron.com/careers", mode: link-only, enabled: true, notes: "Eightfold robots: Disallow /" }
+  - { name: AMD, slug: amd, tier: A, careersUrl: "https://careers.amd.com/careers-home/jobs", mode: fetch, source: amd, proofUrl: "https://careers.amd.com/careers-home/jobs", proof: confirmed, enabled: true }
+  - { name: Exxon Mobil, slug: exxon-mobil, tier: A, careersUrl: "https://jobs.exxonmobil.com/", mode: fetch, source: successfactors, proof: confirmed, enabled: false, notes: "Server-rendered SuccessFactors HTML; fetcher planned Phase 6" }
+  - { name: Visa, slug: visa, tier: A, careersUrl: "https://corporate.visa.com/en/jobs/", mode: fetch, source: workday, host: visa.wd5.myworkdayjobs.com, tenant: visa, site: Visa, proofUrl: "https://corporate.visa.com/en/jobs/", proof: pending, enabled: true }
+  - { name: Intel, slug: intel, tier: A, careersUrl: "https://jobs.intel.com/", mode: fetch, source: workday, host: intel.wd1.myworkdayjobs.com, tenant: intel, site: External, proof: pending, enabled: true, notes: "Careers site blocks bots; owner OK'd Workday route" }
+  - { name: Johnson & Johnson, slug: johnson-and-johnson, tier: A, careersUrl: "https://www.careers.jnj.com/", mode: fetch, source: workday, host: jj.wd5.myworkdayjobs.com, tenant: jj, site: JJ, proof: pending, enabled: true, notes: "Careers site blocks bots; owner OK'd Workday route" }
+  - { name: Oracle, slug: oracle, tier: A, careersUrl: "https://careers.oracle.com/", mode: fetch, source: oracle, host: eeho.fa.us2.oraclecloud.com, siteNumber: CX_45001, proofUrl: "https://careers.oracle.com/", proof: confirmed, enabled: true }
+  - { name: Costco, slug: costco, tier: A, careersUrl: "https://www.costco.com/f/-/careers", mode: link-only, enabled: true, notes: "Mostly hourly; heavy bot protection" }
+  - { name: Cisco, slug: cisco, tier: A, careersUrl: "https://careers.cisco.com/global/en", mode: fetch, source: workday, host: cisco.wd5.myworkdayjobs.com, tenant: cisco, site: Cisco_Careers, proof: pending, enabled: true }
+  - { name: Mastercard, slug: mastercard, tier: A, careersUrl: "https://careers.mastercard.com/us/en", mode: fetch, source: workday, host: mastercard.wd1.myworkdayjobs.com, tenant: mastercard, site: CorporateCareers, proofUrl: "https://careers.mastercard.com/us/en", proof: confirmed, enabled: true }
+  - { name: Caterpillar, slug: caterpillar, tier: A, careersUrl: "https://careers.caterpillar.com/", mode: fetch, source: workday, host: cat.wd5.myworkdayjobs.com, tenant: cat, site: CaterpillarCareers, proof: pending, enabled: true }
+  - { name: Chevron, slug: chevron, tier: A, careersUrl: "https://careers.chevron.com/", mode: fetch, source: workday, host: chevron.wd5.myworkdayjobs.com, tenant: chevron, site: jobs, proof: pending, enabled: true }
+  - { name: AbbVie, slug: abbvie, tier: A, careersUrl: "https://careers.abbvie.com/en", mode: fetch, source: workday, host: abbvie.wd5.myworkdayjobs.com, tenant: abbvie, site: TBD, proof: pending, enabled: false, notes: "Workday site ID unresolved (401)" }
+  - { name: Netflix, slug: netflix, tier: A, careersUrl: "https://explore.jobs.netflix.net/careers", mode: link-only, enabled: true, notes: "Eightfold robots: Disallow /" }
+  - { name: Bank of America, slug: bank-of-america, tier: A, careersUrl: "https://careers.bankofamerica.com/", mode: fetch, source: workday, host: ghr.wd1.myworkdayjobs.com, tenant: ghr, site: Lateral-US, proofUrl: "https://careers.bankofamerica.com/en-us", proof: confirmed, enabled: true }
+  - { name: Lam Research, slug: lam-research, tier: A, careersUrl: "https://careers.lamresearch.com/", mode: link-only, enabled: true, notes: "Eightfold robots: Disallow /" }
+  - { name: UnitedHealth Group, slug: unitedhealth-group, tier: A, careersUrl: "https://careers.unitedhealthgroup.com/", mode: link-only, enabled: true, notes: "Radancy /search-jobs/ disallowed; no Workday tenant found yet" }
+  - { name: Coca-Cola, slug: coca-cola, tier: A, careersUrl: "https://careers.coca-colacompany.com/", mode: fetch, source: workday, host: coke.wd1.myworkdayjobs.com, tenant: coke, site: coca-cola-careers, proof: pending, enabled: true }
+  - { name: Applied Materials, slug: applied-materials, tier: A, careersUrl: "https://careers.appliedmaterials.com/", mode: link-only, enabled: true, notes: "Eightfold robots: Disallow /" }
+  - { name: Procter & Gamble, slug: procter-and-gamble, tier: A, careersUrl: "https://www.pgcareers.com/", mode: fetch, source: workday, host: pg.wd5.myworkdayjobs.com, tenant: pg, site: "1000", proof: pending, enabled: true }
+  - { name: Palantir, slug: palantir, tier: A, careersUrl: "https://www.palantir.com/careers/", mode: fetch, source: lever, board: palantir, proofUrl: "https://www.palantir.com/careers/", proof: confirmed, enabled: true }
+  - { name: Morgan Stanley, slug: morgan-stanley, tier: A, careersUrl: "https://www.morganstanley.com/careers", mode: fetch, source: workday, host: ms.wd5.myworkdayjobs.com, tenant: ms, site: External, proof: pending, enabled: true }
+  - { name: GE Aerospace, slug: ge-aerospace, tier: A, careersUrl: "https://careers.geaerospace.com/", mode: fetch, source: workday, host: geaerospace.wd5.myworkdayjobs.com, tenant: geaerospace, site: GE_ExternalSite, proof: pending, enabled: true }
+  - { name: Home Depot, slug: home-depot, tier: A, careersUrl: "https://careers.homedepot.com/", mode: fetch, source: workday, host: homedepot.wd5.myworkdayjobs.com, tenant: homedepot, site: CareerDepot, proofUrl: "https://careers.homedepot.com/", proof: confirmed, enabled: true }
+  - { name: Goldman Sachs, slug: goldman-sachs, tier: A, careersUrl: "https://www.goldmansachs.com/careers/", mode: link-only, enabled: true, notes: "higher.gs.com robots: Disallow /" }
+  - { name: Philip Morris International, slug: philip-morris-international, tier: A, careersUrl: "https://www.pmi.com/careers", mode: link-only, enabled: true, notes: "Source not yet identified" }
+  - { name: Merck, slug: merck, tier: A, careersUrl: "https://jobs.merck.com/us/en", mode: fetch, source: workday, host: msd.wd5.myworkdayjobs.com, tenant: msd, site: SearchJobs, proofUrl: "https://jobs.merck.com/us/en", proof: confirmed, enabled: true }
+  - { name: Texas Instruments, slug: texas-instruments, tier: A, careersUrl: "https://careers.ti.com/", mode: fetch, source: oracle, host: edbz.fa.us2.oraclecloud.com, siteNumber: CX, proofUrl: "https://careers.ti.com/", proof: confirmed, enabled: true }
+  - { name: GE Vernova, slug: ge-vernova, tier: A, careersUrl: "https://careers.gevernova.com/", mode: fetch, source: workday, host: gevernova.wd5.myworkdayjobs.com, tenant: gevernova, site: Vernova_ExternalSite, proofUrl: "https://careers.gevernova.com/", proof: confirmed, enabled: true }
+  - { name: KLA, slug: kla, tier: A, careersUrl: "https://www.kla.com/careers", mode: fetch, source: workday, host: kla.wd1.myworkdayjobs.com, tenant: kla, site: Search, proof: pending, enabled: true }
+  - { name: RTX, slug: rtx, tier: A, careersUrl: "https://careers.rtx.com/global/en", mode: fetch, source: workday, host: globalhr.wd5.myworkdayjobs.com, tenant: globalhr, site: REC_RTX_Ext_Gateway, proof: pending, enabled: true }
+  - { name: Linde, slug: linde, tier: A, careersUrl: "https://www.linde.com/careers", mode: link-only, enabled: true, notes: "Workday site ID unresolved" }
+  - { name: Wells Fargo, slug: wells-fargo, tier: A, careersUrl: "https://www.wellsfargojobs.com/", mode: fetch, source: workday, host: wf.wd1.myworkdayjobs.com, tenant: wf, site: WellsFargoJobs, proof: pending, enabled: true }
+  - { name: Qualcomm, slug: qualcomm, tier: A, careersUrl: "https://careers.qualcomm.com/careers", mode: link-only, enabled: true, notes: "Eightfold robots: Disallow /" }
+  - { name: Citigroup, slug: citigroup, tier: A, careersUrl: "https://jobs.citi.com/", mode: fetch, source: workday, host: citi.wd5.myworkdayjobs.com, tenant: citi, site: "2", proofUrl: "https://jobs.citi.com/", proof: confirmed, enabled: true }
+  - { name: American Express, slug: american-express, tier: A, careersUrl: "https://www.americanexpress.com/en-us/careers/", mode: fetch, source: oracle, host: egug.fa.us2.oraclecloud.com, siteNumber: CX_1, proofUrl: "https://www.americanexpress.com/en-us/careers/", proof: confirmed, enabled: true }
+  - { name: IBM, slug: ibm, tier: A, careersUrl: "https://www.ibm.com/careers/search", mode: link-only, enabled: true, notes: "Owner approved fetching; IBM search API request format still to be mapped (Phase 6). Link-only until then" }
+
+  # ─── Tier B: top tech not in Tier A ──────────────────────────────────────────────────────
+  - { name: Salesforce, slug: salesforce, tier: B, careersUrl: "https://careers.salesforce.com/", mode: fetch, source: workday, host: salesforce.wd12.myworkdayjobs.com, tenant: salesforce, site: External_Career_Site, proofUrl: "https://careers.salesforce.com/", proof: confirmed, enabled: true }
+  - { name: Adobe, slug: adobe, tier: B, careersUrl: "https://careers.adobe.com/us/en", mode: fetch, source: workday, host: adobe.wd5.myworkdayjobs.com, tenant: adobe, site: external_experienced, proof: pending, enabled: true }
+  - { name: Uber, slug: uber, tier: B, careersUrl: "https://www.uber.com/us/en/careers/", mode: link-only, enabled: true, notes: "robots disallows */api/" }
+  - { name: Airbnb, slug: airbnb, tier: B, careersUrl: "https://careers.airbnb.com/", mode: fetch, source: greenhouse, board: airbnb, proofUrl: "https://careers.airbnb.com/", proof: confirmed, enabled: true }
+  - { name: Snowflake, slug: snowflake, tier: B, careersUrl: "https://careers.snowflake.com/", mode: fetch, source: ashby, board: snowflake, proof: pending, enabled: true }
+  - { name: ServiceNow, slug: servicenow, tier: B, careersUrl: "https://careers.servicenow.com/", mode: link-only, enabled: true, notes: "Workday site ID unresolved" }
+  - { name: Workday, slug: workday, tier: B, careersUrl: "https://www.workday.com/en-us/company/careers/overview.html", mode: fetch, source: workday, host: workday.wd5.myworkdayjobs.com, tenant: workday, site: Workday, proofUrl: "https://www.workday.com/en-us/company/careers/overview.html", proof: confirmed, enabled: true }
+  - { name: Intuit, slug: intuit, tier: B, careersUrl: "https://jobs.intuit.com/", mode: link-only, enabled: true, notes: "Workday site ID unresolved" }
+  - { name: PayPal, slug: paypal, tier: B, careersUrl: "https://careers.pypl.com/", mode: fetch, source: workday, host: paypal.wd1.myworkdayjobs.com, tenant: paypal, site: jobs, proof: pending, enabled: true }
+  - { name: Block, slug: block, tier: B, careersUrl: "https://block.xyz/careers", mode: fetch, source: greenhouse, board: block, proofUrl: "https://block.xyz/careers", proof: confirmed, enabled: true }
+  - { name: Pinterest, slug: pinterest, tier: B, careersUrl: "https://www.pinterestcareers.com/", mode: fetch, source: greenhouse, board: pinterest, proofUrl: "https://www.pinterestcareers.com/", proof: confirmed, enabled: true }
+  - { name: Snap, slug: snap, tier: B, careersUrl: "https://careers.snap.com/", mode: fetch, source: workday, host: snapchat.wd1.myworkdayjobs.com, tenant: snapchat, site: snap, proofUrl: "https://careers.snap.com/jobs", proof: confirmed, enabled: true, notes: "careers.snap.com/api/jobs mirrors this Workday board; Workday gives full details" }
+  - { name: DoorDash, slug: doordash, tier: B, careersUrl: "https://careersatdoordash.com/", mode: fetch, source: greenhouse, board: doordashusa, proof: pending, enabled: true }
+  - { name: Lyft, slug: lyft, tier: B, careersUrl: "https://www.lyft.com/careers", mode: fetch, source: greenhouse, board: lyft, proof: pending, enabled: true, notes: "absolute_url points at careerpuck; apply link uses the Greenhouse posting" }
+  - { name: Coinbase, slug: coinbase, tier: B, careersUrl: "https://www.coinbase.com/careers", mode: fetch, source: greenhouse, board: coinbase, proofUrl: "https://www.coinbase.com/careers", proof: confirmed, enabled: true }
+  - { name: Robinhood, slug: robinhood, tier: B, careersUrl: "https://careers.robinhood.com/", mode: fetch, source: greenhouse, board: robinhood, proofUrl: "https://careers.robinhood.com/", proof: confirmed, enabled: true }
+  - { name: Dropbox, slug: dropbox, tier: B, careersUrl: "https://jobs.dropbox.com/", mode: fetch, source: greenhouse, board: dropbox, proofUrl: "https://jobs.dropbox.com/", proof: confirmed, enabled: true }
+  - { name: CrowdStrike, slug: crowdstrike, tier: B, careersUrl: "https://www.crowdstrike.com/careers/", mode: fetch, source: workday, host: crowdstrike.wd5.myworkdayjobs.com, tenant: crowdstrike, site: crowdstrikecareers, proofUrl: "https://www.crowdstrike.com/en-us/careers/", proof: confirmed, enabled: true }
+  - { name: Palo Alto Networks, slug: palo-alto-networks, tier: B, careersUrl: "https://jobs.paloaltonetworks.com/", mode: fetch, source: workday, host: paloaltonetworks.wd5.myworkdayjobs.com, tenant: paloaltonetworks, site: PANWExternalCareers, proofUrl: "https://jobs.paloaltonetworks.com/en", proof: confirmed, enabled: true }
+  - { name: Datadog, slug: datadog, tier: B, careersUrl: "https://careers.datadoghq.com/", mode: fetch, source: greenhouse, board: datadog, proofUrl: "https://careers.datadoghq.com/", proof: confirmed, enabled: true }
+  - { name: Cloudflare, slug: cloudflare, tier: B, careersUrl: "https://www.cloudflare.com/careers/jobs/", mode: fetch, source: greenhouse, board: cloudflare, proofUrl: "https://www.cloudflare.com/careers/jobs/", proof: confirmed, enabled: true }
+  - { name: MongoDB, slug: mongodb, tier: B, careersUrl: "https://www.mongodb.com/careers", mode: fetch, source: greenhouse, board: mongodb, proofUrl: "https://www.mongodb.com/careers", proof: confirmed, enabled: true }
+  - { name: Reddit, slug: reddit, tier: B, careersUrl: "https://redditinc.com/careers", mode: fetch, source: greenhouse, board: reddit, proofUrl: "https://redditinc.com/careers", proof: confirmed, enabled: true }
+  - { name: Roblox, slug: roblox, tier: B, careersUrl: "https://careers.roblox.com/", mode: fetch, source: greenhouse, board: roblox, proofUrl: "https://careers.roblox.com/", proof: confirmed, enabled: true }
+  - { name: Figma, slug: figma, tier: B, careersUrl: "https://www.figma.com/careers/", mode: fetch, source: greenhouse, board: figma, proofUrl: "https://www.figma.com/careers/", proof: confirmed, enabled: true }
+  - { name: Instacart, slug: instacart, tier: B, careersUrl: "https://instacart.careers/", mode: fetch, source: greenhouse, board: instacart, proofUrl: "https://instacart.careers/", proof: confirmed, enabled: true }
+  - { name: Zoom, slug: zoom, tier: B, careersUrl: "https://www.careers.zoom.us/", mode: fetch, source: workday, host: zoom.wd5.myworkdayjobs.com, tenant: zoom, site: Zoom, proof: pending, enabled: true }
+
+  # ─── Tier C: leading private companies ───────────────────────────────────────────────────
+  - { name: TikTok, slug: tiktok, tier: C, careersUrl: "https://lifeattiktok.com/", mode: fetch, source: tiktok, proofUrl: "https://lifeattiktok.com/search", proof: confirmed, enabled: true }
+  - { name: OpenAI, slug: openai, tier: C, careersUrl: "https://openai.com/careers/", mode: fetch, source: ashby, board: openai, proofUrl: "https://openai.com/careers/search/", proof: confirmed, enabled: true }
+  - { name: Anthropic, slug: anthropic, tier: C, careersUrl: "https://www.anthropic.com/careers", mode: fetch, source: greenhouse, board: anthropic, proofUrl: "https://www.anthropic.com/careers", proof: confirmed, enabled: true }
+  - { name: Stripe, slug: stripe, tier: C, careersUrl: "https://stripe.com/jobs", mode: fetch, source: greenhouse, board: stripe, proofUrl: "https://stripe.com/jobs", proof: confirmed, enabled: true }
+  - { name: Databricks, slug: databricks, tier: C, careersUrl: "https://www.databricks.com/company/careers", mode: fetch, source: greenhouse, board: databricks, proofUrl: "https://www.databricks.com/company/careers", proof: confirmed, enabled: true }
+  - { name: SpaceX, slug: spacex, tier: C, careersUrl: "https://www.spacex.com/careers/", mode: fetch, source: greenhouse, board: spacex, proofUrl: "https://www.spacex.com/careers/jobs", proof: confirmed, enabled: true }
+  - { name: Anduril, slug: anduril, tier: C, careersUrl: "https://www.anduril.com/careers", mode: fetch, source: greenhouse, board: andurilindustries, proof: pending, enabled: true }
+  - { name: Scale AI, slug: scale-ai, tier: C, careersUrl: "https://scale.com/careers", mode: fetch, source: greenhouse, board: scaleai, proof: pending, enabled: true }
+  - { name: Ramp, slug: ramp, tier: C, careersUrl: "https://ramp.com/careers", mode: fetch, source: ashby, board: ramp, proofUrl: "https://ramp.com/careers", proof: confirmed, enabled: true }
+  - { name: Rippling, slug: rippling, tier: C, careersUrl: "https://www.rippling.com/careers", mode: fetch, source: rippling, board: rippling, proof: pending, enabled: true }
+  - { name: xAI, slug: xai, tier: C, careersUrl: "https://x.ai/careers", mode: fetch, source: greenhouse, board: xai, proof: pending, enabled: true }
+  - { name: Perplexity, slug: perplexity, tier: C, careersUrl: "https://www.perplexity.ai/hub/careers", mode: fetch, source: ashby, board: perplexity, proof: pending, enabled: true }
+  - { name: Plaid, slug: plaid, tier: C, careersUrl: "https://plaid.com/careers/", mode: fetch, source: ashby, board: plaid, proof: pending, enabled: true }
+  - { name: Notion, slug: notion, tier: C, careersUrl: "https://www.notion.com/careers", mode: fetch, source: ashby, board: notion, proofUrl: "https://www.notion.com/careers", proof: confirmed, enabled: true }
+  - { name: Discord, slug: discord, tier: C, careersUrl: "https://discord.com/careers", mode: fetch, source: greenhouse, board: discord, proof: pending, enabled: true }
+  - { name: Epic Games, slug: epic-games, tier: C, careersUrl: "https://www.epicgames.com/site/en-US/careers", mode: fetch, source: greenhouse, board: epicgames, proofUrl: "https://epicgames.com/careers", proof: confirmed, enabled: true }
+
+# Companies that asked to be removed or corrected. Slugs listed here are never fetched or shown.
+denylist: []

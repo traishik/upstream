@@ -1,0 +1,80 @@
+---
+import { site } from '@site';
+import Base from '@/layouts/Base.astro';
+import FormEnhancer from '@/components/ui/FormEnhancer.astro';
+import { copy } from '@content/copy';
+import { loadManifest } from '@/lib/manifest';
+const companies = loadManifest().companies;
+const siteKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || site.turnstileSiteKey;
+const field = 'w-full rounded-[var(--radius)] border border-hairline bg-surface px-4 text-sm text-ink placeholder:text-muted transition-colors duration-200 hover:border-hairline-strong focus:border-accent focus:outline-none';
+---
+<Base title="Share a tip or referral" description="Work at one of these companies? Help the next person in.">
+  <section class="mx-auto max-w-6xl px-4 pb-24 pt-16 sm:px-8">
+    <div class="grid gap-16 lg:grid-cols-[1fr_340px]">
+      <div>
+        <p class="meta flex items-center gap-4 text-accent"><span class="rule-accent inline-block"></span>{copy.insiders.eyebrow}</p>
+        <h1 class="mt-6 text-[length:var(--t-h1)]">Pay it forward</h1>
+        <p class="mt-4 max-w-2xl text-muted">{copy.insiders.promptBody}</p>
+
+        <form class="mt-12 flex max-w-xl flex-col gap-8" method="post" action="/api/insiders" data-api-form data-success="Thank you for paying it forward. We review every note, usually within a few days.">
+          <p data-form-status role="status" tabindex="-1" hidden></p>
+          <label class="block">
+            <span class="meta mb-2 block">Where do you work?</span>
+            <select name="company" required class={`${field} h-12`} data-company>
+              <option value="">Choose a company</option>
+              {companies.map((c) => <option value={c.slug}>{c.name}</option>)}
+            </select>
+          </label>
+          <label class="block">
+            <span class="meta mb-2 block">Your tip <span class="normal-case tracking-normal">(what you wish you'd known before applying)</span></span>
+            <textarea name="tip" maxlength="600" rows="5" class={`${field} py-3 leading-6`} placeholder="Read the engineering blog before your loop. Interviewers light up when you connect your answer to something real we've built."></textarea>
+            <span class="meta mt-2 block !text-[0.625rem]">Up to 600 characters · no names of colleagues, nothing confidential</span>
+          </label>
+          <fieldset class="flex flex-col gap-4">
+            <legend class="meta mb-2">Referral link <span class="normal-case tracking-normal">(optional)</span></legend>
+            <input type="url" name="referral_url" aria-label="Referral link URL" maxlength="500" inputmode="url" class={`${field} h-12`} placeholder="https://…  must be on the company's careers site or job board" />
+            <input type="text" name="referral_note" aria-label="Which roles the referral is for" maxlength="140" class={`${field} h-12`} placeholder="Which roles? e.g. “Any PM role in Seattle or remote US”" />
+            <p class="text-xs text-muted">Referral links stay up for 90 days. We'll send a private renewal link if you leave an email below.</p>
+          </fieldset>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <label class="block"><span class="meta mb-2 block">First name</span><input name="name" maxlength="40" class={`${field} h-12`} placeholder="Optional" /></label>
+            <label class="block"><span class="meta mb-2 block">Role</span><input name="role" maxlength="60" class={`${field} h-12`} placeholder="e.g. Senior PM" /></label>
+            <label class="block"><span class="meta mb-2 block">Time there</span><input name="tenure" maxlength="20" class={`${field} h-12`} placeholder="e.g. 3 yrs" /></label>
+          </div>
+          <label class="block">
+            <span class="meta mb-2 block">Email <span class="normal-case tracking-normal">(private, never shown; only for a renewal link or a question)</span></span>
+            <input type="email" name="reply_email" maxlength="254" autocomplete="email" class={`${field} h-12`} placeholder="Optional" />
+          </label>
+          <label class="flex cursor-pointer items-start gap-3 text-sm text-muted">
+            <input type="checkbox" name="confirm" required class="mt-1 size-4 accent-[var(--c-accent)]" />
+            <span>I work at this company, nothing here is confidential, and I'm happy for it to appear publicly after review.</span>
+          </label>
+          <div aria-hidden="true" class="absolute -left-[9999px] h-px w-px overflow-hidden"><label>Website <input type="text" name="website" tabindex="-1" autocomplete="off" /></label></div>
+          <div class="cf-turnstile min-h-[65px]" data-sitekey={siteKey} data-theme="auto"></div>
+          <div class="flex flex-wrap items-center gap-4">
+            <button type="submit" class="inline-flex h-12 items-center rounded-full bg-accent-fill px-8 text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-accent-fill-strong">Share with the community</button>
+            <p class="text-xs text-muted">Reviewed before it appears.</p>
+          </div>
+        </form>
+      </div>
+      <aside class="flex flex-col gap-6 text-sm text-muted">
+        <div class="rounded-[var(--radius)] border border-hairline bg-surface p-6">
+          <p class="meta text-ink">House rules</p>
+          <ul class="mt-4 flex list-disc flex-col gap-2 pl-4">
+            <li>Share what helped you, not what's confidential.</li>
+            <li>Referral links must be on the company's own careers site or its official job board.</li>
+            <li>No email addresses or phone numbers in public notes.</li>
+            <li>A referral never costs anyone money. We remove anything that asks for payment.</li>
+          </ul>
+        </div>
+        <p class="text-xs leading-5">{copy.insiders.disclaimer}</p>
+      </aside>
+    </div>
+  </section>
+  <FormEnhancer />
+  <script>
+    const slug = new URLSearchParams(location.search).get('company');
+    const sel = document.querySelector<HTMLSelectElement>('select[data-company]');
+    if (slug && sel && [...sel.options].some((o) => o.value === slug)) sel.value = slug;
+  </script>
+</Base>

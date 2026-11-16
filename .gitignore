@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.astro/
+.wrangler/
+.env
+.env.*
+!.env.example
+.DS_Store
+data/state/
+data/cache/
+public/data/
+data/*.log
+.dev.vars
+exports/

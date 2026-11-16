@@ -1,0 +1,55 @@
+---
+/**
+ * Reserved ad space. Height is fixed per placement, so there's no layout shift whether an ad loads
+ * or not. The creative comes from config/ads.yaml: direct sponsor → network (lazy-loaded, only when
+ * enabled) → house. Ads are never placed between a reader and an Apply button.
+ */
+import { networkConfig, pick, type Placement } from '@/lib/ads';
+interface Props { placement: Placement; seed?: number }
+const { placement, seed = 0 } = Astro.props;
+const height = { home: 'min-h-[128px]', list: 'min-h-[112px]', detail: 'min-h-[280px]' }[placement];
+const choice = Astro.slots.has('default') ? null : pick(placement, seed);
+const net = networkConfig();
+const external = (u: string) => /^https?:/.test(u);
+---
+<aside class={`relative rounded-[var(--radius)] border border-hairline bg-surface ${height}`} aria-label="Sponsored">
+  <span class="meta absolute right-3 top-3 !text-[0.625rem]">Sponsored</span>
+  {choice?.kind === 'network' ? (
+    <div class={`${height} w-full`} data-ad-network data-client={net.client} data-slot={net.slots[placement]}></div>
+  ) : (
+    <div class="flex h-full flex-col justify-center gap-2 p-6 pr-24">
+      <slot>
+        {choice?.creative && (
+          <>
+            <p class="meta text-accent">{choice.kind === 'direct' ? `Sponsor · ${choice.creative.sponsor ?? ''}` : choice.creative.eyebrow ?? 'House'}</p>
+            <p class="font-serif text-xl">{choice.creative.headline}</p>
+            {choice.creative.body && <p class="text-sm text-muted">{choice.creative.body}</p>}
+            <a href={choice.creative.url} class="link w-fit text-sm" data-track="ad_click" data-track-props={JSON.stringify({ id: choice.creative.id, placement })} {...(external(choice.creative.url) ? { target: '_blank', rel: 'noopener sponsored' } : {})}>{choice.creative.cta ?? 'Learn more'} →</a>
+          </>
+        )}
+      </slot>
+    </div>
+  )}
+</aside>
+{choice?.kind === 'network' && (
+  <script>
+    // Load the network script only when an ad slot scrolls near the viewport.
+    const slots = document.querySelectorAll<HTMLElement>('[data-ad-network]:not([data-loaded])');
+    const io = new IntersectionObserver((entries) => {
+      for (const e of entries) {
+        if (!e.isIntersecting) continue;
+        const el = e.target as HTMLElement;
+        io.unobserve(el);
+        el.dataset.loaded = '1';
+        if (!document.querySelector('script[data-adsbygoogle]')) {
+          const s = Object.assign(document.createElement('script'), { async: true, src: `https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${el.dataset.client}`, crossOrigin: 'anonymous' });
+          s.dataset.adsbygoogle = '1';
+          document.head.append(s);
+        }
+        el.innerHTML = `<ins class="adsbygoogle" style="display:block;height:100%" data-ad-client="${el.dataset.client}" data-ad-slot="${el.dataset.slot}"></ins>`;
+        ((window as any).adsbygoogle = (window as any).adsbygoogle || []).push({});
+      }
+    }, { rootMargin: '200px' });
+    slots.forEach((s) => io.observe(s));
+  </script>
+)}

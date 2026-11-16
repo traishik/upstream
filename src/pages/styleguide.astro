@@ -1,0 +1,270 @@
+---
+import '@fontsource/cormorant-garamond/300.css'; // comparison only
+import Base from '@/layouts/Base.astro';
+import Hero from '@/components/ui/Hero.astro';
+import JobRow from '@/components/ui/JobRow.astro';
+import AdSlot from '@/components/ui/AdSlot.astro';
+import ApplyButton from '@/components/ui/ApplyButton.astro';
+import Badge from '@/components/ui/Badge.astro';
+import LinkOnlyCard from '@/components/ui/LinkOnlyCard.astro';
+import EmptyState from '@/components/ui/EmptyState.astro';
+import FeedbackForm from '@/components/ui/FeedbackForm.astro';
+import CompanyMark from '@/components/ui/CompanyMark.astro';
+import FilterBar from '@/components/ui/FilterBar.tsx';
+import InsiderPrompt from "@/components/ui/InsiderPrompt.astro";
+import InsiderCard from "@/components/ui/InsiderCard.astro";
+import { copy } from '@content/copy';
+
+const palette = [
+  { name: 'Onyx', token: '--c-bg', hex: '#0B0B0C', use: 'Background' },
+  { name: 'Graphite', token: '--c-surface', hex: '#161618', use: 'Surfaces, cards, inputs' },
+  { name: 'Hairline', token: '--c-hairline', hex: '#2A2A2D', use: 'Dividers, borders' },
+  { name: 'Ivory', token: '--c-text', hex: '#F3EFE6', use: 'Primary text, logos' },
+  { name: 'Stone', token: '--c-text-muted', hex: '#9A968D', use: 'Secondary text, metadata' },
+  { name: 'Champagne', token: '--c-accent', hex: '#C9A96E', use: 'Links, Apply, active, fine rules' },
+  { name: 'Sage', token: '--c-live', hex: '#8FBF9A', use: '“Verified live” dots only' },
+];
+const scale = [
+  { label: 'Display', v: '--t-display', sample: 'Straight to it.' },
+  { label: 'H1', v: '--t-h1', sample: 'Software Engineering' },
+  { label: 'H2', v: '--t-h2', sample: 'Companies we follow' },
+  { label: 'H3', v: '--t-h3', sample: 'About the role' },
+];
+const jobs = [
+  { company: 'Anthropic', title: 'Research Engineer, Interpretability', location: 'San Francisco, CA', workplace: 'Hybrid', level: 'Senior', verifiedAgo: '2h ago', isNew: true },
+  { company: 'Stripe', title: 'Software Engineer II, Payments Infrastructure', location: 'Seattle, WA', workplace: 'Hybrid', level: 'Mid', verifiedAgo: '3h ago' },
+  { company: 'JPMorgan Chase', title: 'Summer 2027 Analyst Intern, Corporate & Investment Bank', location: 'New York, NY', workplace: 'Onsite', level: 'Internship', verifiedAgo: '3h ago' },
+  { company: 'OpenAI', title: 'Technical Program Manager III, Compute', location: 'Remote (US)', workplace: 'Remote', level: 'Senior', verifiedAgo: '5h ago' },
+] as const;
+---
+<Base title="Styleguide" noindex>
+  <div class="mx-auto max-w-6xl px-4 pt-16 sm:px-8">
+    <p class="meta flex items-center gap-4"><span class="rule-accent inline-block"></span>Phase 1 · For review</p>
+    <h1 class="mt-6 text-[length:var(--t-h1)]">Styleguide</h1>
+    <p class="mt-4 max-w-2xl text-muted">
+      Luxurious, futuristic, minimal, and hopeful. Every component on the site is built from what's on this page.
+      Use the theme toggle (top right) to see the light theme.
+    </p>
+    <nav aria-label="Styleguide sections" class="meta mt-8 flex flex-wrap gap-x-6 gap-y-2">
+      {['Palette', 'Type', 'Hero', 'Job rows', 'Filters', 'Apply', 'Link-only', 'Inside Track', 'Ads', 'Feedback', 'Empty'].map((s) => (
+        <a class="hover:text-accent" href={`#${s.toLowerCase().replace(/[^a-z]+/g, '-')}`}>{s}</a>
+      ))}
+    </nav>
+  </div>
+
+  <!-- Palette -->
+  <section id="palette" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Palette</h2>
+    <p class="mt-2 text-sm text-muted">Dark is primary. All text pairs pass WCAG AA (checked by <code class="font-mono text-xs">npm run contrast</code>).</p>
+    <ul class="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4 lg:grid-cols-7">
+      {palette.map((c) => (
+        <li class="overflow-hidden rounded-[var(--radius)] border border-hairline">
+          <div class="h-24" style={`background: var(${c.token})`}></div>
+          <div class="p-4">
+            <p class="text-sm">{c.name}</p>
+            <p class="meta mt-1 !text-[0.625rem]">{c.hex}</p>
+            <p class="mt-2 text-xs leading-5 text-muted">{c.use}</p>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Type -->
+  <section id="type" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Type</h2>
+    <p class="mt-2 text-sm text-muted">Bodoni Moda was chosen for headlines. Both are free and self-hosted; switch in <code class="font-mono text-xs">site.config.ts → displaySerif</code>.</p>
+    <div class="mt-8 grid gap-8 md:grid-cols-2">
+      <div class="rounded-[var(--radius)] border border-hairline p-8">
+        <p class="meta">A · Cormorant Garamond 300</p>
+        <p class="mt-6 text-5xl font-light leading-tight" style="font-family: 'Cormorant Garamond', serif">Stop applying into the void.</p>
+        <p class="mt-4 text-sm text-muted">Soft, literary, airy at large sizes. Feels like a quiet boutique.</p>
+      </div>
+      <div class="rounded-[var(--radius)] border border-hairline p-8">
+        <p class="meta">B · Bodoni Moda 400 (chosen)</p>
+        <p class="mt-6 text-5xl leading-tight" style="font-family: 'Bodoni Moda Variable', serif; font-weight: 400">Stop applying into the void.</p>
+        <p class="mt-4 text-sm text-muted">Sharper contrast, more fashion-editorial. Its lightest weight is 400, so it's a little heavier.</p>
+      </div>
+    </div>
+    <div class="mt-12 divide-y divide-hairline border-y border-hairline">
+      {scale.map((s) => (
+        <div class="grid items-baseline gap-4 py-6 sm:grid-cols-[160px_1fr]">
+          <p class="meta">{s.label} <span class="normal-case tracking-normal text-muted/70">{s.v}</span></p>
+          <p class="font-serif font-light leading-tight" style={`font-size: var(${s.v})`}>{s.sample}</p>
+        </div>
+      ))}
+      <div class="grid items-baseline gap-4 py-6 sm:grid-cols-[160px_1fr]">
+        <p class="meta">Body · Geist</p>
+        <p class="max-w-2xl text-[length:var(--t-body-lg)] leading-8">Every role here comes straight from the company's own careers page and is checked to be live, so your effort goes where it counts.</p>
+      </div>
+      <div class="grid items-baseline gap-4 py-6 sm:grid-cols-[160px_1fr]">
+        <p class="meta">Small · Geist</p>
+        <p class="text-sm text-muted">San Francisco, CA · Hybrid · Full-time</p>
+      </div>
+      <div class="grid items-baseline gap-4 py-6 sm:grid-cols-[160px_1fr]">
+        <p class="meta">Meta · Geist Mono</p>
+        <p class="meta text-ink">12,480 live roles / Verified live · 3h ago</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hero -->
+  <section id="hero" class="border-y border-hairline">
+    <div class="mx-auto max-w-6xl px-4 pt-16 sm:px-8">
+      <h2 class="text-[length:var(--t-h2)]">Hero · First light</h2>
+      <p class="mt-2 text-sm text-muted">The dawn glow lives only here. It rises once on load (and stays still if you prefer reduced motion).</p>
+    </div>
+    <Hero live={12480} newToday={1206} refreshedAgo="2h ago" />
+  </section>
+  <section class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h3 class="text-[length:var(--t-h3)]">Headline options</h3>
+    <p class="mt-2 text-sm text-muted">Option 1 is live in the hero above. Pick one, or mix.</p>
+    <ol class="mt-8 space-y-6">
+      {copy.hero.headlines.map((h, i) => (
+        <li class="grid gap-4 border-b border-hairline pb-6 sm:grid-cols-[48px_1fr]">
+          <span class="meta pt-3">0{i + 1}</span>
+          <p class="font-serif text-4xl font-light leading-tight">{h}</p>
+        </li>
+      ))}
+    </ol>
+    <h3 class="mt-16 text-[length:var(--t-h3)]">Encouragement lines</h3>
+    <p class="mt-2 text-sm text-muted">One per day, under the counter. Dismissible, and the choice is remembered.</p>
+    <ul class="mt-6 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+      {copy.encouragement.map((l) => <li class="font-serif text-lg font-light italic text-muted">“{l}”</li>)}
+    </ul>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Job rows -->
+  <section id="job-rows" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Job rows</h2>
+    <p class="mt-2 text-sm text-muted">Logo or monogram, company, title, location, workplace, level, and when we last verified it. On the board, a list ad sits every ~12 rows.</p>
+    <ul class="mt-8 divide-y divide-hairline border-y border-hairline">
+      {jobs.slice(0, 2).map((j) => <JobRow href="#job-rows" {...j} />)}
+      <li class="py-4"><AdSlot placement="list" /></li>
+      {jobs.slice(2).map((j) => <JobRow href="#job-rows" {...j} />)}
+    </ul>
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <Badge>Hybrid</Badge><Badge>Senior</Badge><Badge tone="accent">Direct to source</Badge><Badge tone="live">Live</Badge><Badge tone="new">New</Badge>
+    </div>
+    <div class="mt-8 flex items-center gap-4">
+      <CompanyMark name="Anthropic" size="sm" /><CompanyMark name="JPMorgan Chase" /><CompanyMark name="Epic Games" size="lg" />
+      <p class="text-sm text-muted">Monogram fallback until local ivory logos are added under <code class="font-mono text-xs">/public/logos</code>.</p>
+    </div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Filters -->
+  <section id="filters" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Filters</h2>
+    <p class="mt-2 text-sm text-muted">Try it. The URL updates as you filter, so any search can be shared.</p>
+    <div class="mt-8"><FilterBar client:visible /></div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Apply -->
+  <section id="apply" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Apply</h2>
+    <p class="mt-2 text-sm text-muted">Opens the exact official posting in a new tab. No ad is ever placed between the reader and this button.</p>
+    <div class="mt-8 grid gap-12 lg:grid-cols-[1fr_320px]">
+      <article>
+        <p class="meta">Stripe · Seattle, WA · Hybrid · Full-time</p>
+        <h3 class="mt-4 text-[length:var(--t-h1)]">Software Engineer II, Payments Infrastructure</h3>
+        <div class="mt-8 flex flex-wrap items-center gap-4">
+          <ApplyButton href="https://stripe.com/jobs" company="Stripe" />
+          <button type="button" class="inline-flex h-14 items-center gap-2 rounded-full border border-hairline-strong px-6 text-sm transition-colors duration-200 hover:border-accent">
+            <span aria-hidden="true">☆</span> Save role
+          </button>
+        </div>
+        <p class="meta mt-6 flex items-center gap-2"><span class="inline-block size-1.5 rounded-full bg-live"></span>Last verified 3h ago · from stripe.com</p>
+        <div class="prose-job mt-12">
+          <h2>About the team</h2>
+          <p>Sample description to show how company HTML is set in our typography after sanitizing. Headings, lists and links all inherit the site's type.</p>
+          <ul><li>Design and operate systems that move money reliably</li><li>Partner with product and risk teams</li><li>Mentor engineers early in their careers</li></ul>
+          <p>Read the <a href="#apply">full posting</a> on the company's site.</p>
+        </div>
+      </article>
+      <aside class="flex flex-col gap-6">
+        <AdSlot placement="detail" />
+        <p class="text-xs text-muted">Detail-page ad: sidebar on desktop, below the description on mobile.</p>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Link-only -->
+  <section id="link-only" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Link-only companies</h2>
+    <p class="mt-2 text-sm text-muted">For companies whose careers pages don't let us fetch listings. Two copy options. Pick one.</p>
+    <div class="mt-8 grid gap-6 md:grid-cols-2">
+      <div><p class="meta mb-3">Option A</p><LinkOnlyCard company="Google" careersUrl="https://www.google.com/about/careers/applications/" /></div>
+      <div><p class="meta mb-3">Option B</p><LinkOnlyCard company="Netflix" careersUrl="https://explore.jobs.netflix.net/careers" variant="alt" /></div>
+    </div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Inside Track -->
+  <section id="inside-track" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Inside Track</h2>
+    <p class="mt-2 max-w-2xl text-sm text-muted">People who work at listed companies share tips and referral links. Shown on each company page, on the home page, on /insiders, and in the job-detail sidebar (never between the reader and Apply).</p>
+    <div class="mt-8"><InsiderPrompt /></div>
+    <div class="mt-12 grid gap-12 lg:grid-cols-[1fr_320px]">
+      <div>
+        <h3 class="text-[length:var(--t-h3)]">{copy.insiders.sectionTitle("Stripe")}</h3>
+        <div class="mt-6">
+          <InsiderCard id="demo1" name="Priya" role="Senior Engineer" tenure="3 yrs" sharedAgo="4 days ago" tip="Read the engineering blog before your loop. Interviewers light up when you connect your answer to a real system we have written about." />
+          <InsiderCard id="demo2" name="Marcus" role="Product Manager" tenure="1 yr" sharedAgo="2 weeks ago" referralUrl="https://stripe.com/jobs/search" referralNote="Any PM role in Seattle or remote US" tip="Write the cover note like a product spec: the problem, what you did, what changed." />
+          <InsiderCard id="demo3" sharedAgo="1 month ago" referralUrl="https://stripe.com/jobs/search" referralNote="Early-career and new grad engineering" />
+        </div>
+        <p class="mt-6 text-xs leading-5 text-muted">{copy.insiders.disclaimer}</p>
+      </div>
+      <aside class="flex flex-col gap-4 rounded-[var(--radius)] border border-dashed border-hairline-strong p-6">
+        <p class="meta">Empty state</p>
+        <p class="text-sm text-muted">{copy.insiders.empty("Notion")}</p>
+        <a href="/insiders/share" class="link w-fit text-sm">{copy.insiders.promptCta} →</a>
+      </aside>
+    </div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Ads -->
+  <section id="ads" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Ad slots</h2>
+    <p class="mt-2 text-sm text-muted">Reserved height per placement, so there's no layout shift. Small mono “Sponsored” label. Shown here in house mode.</p>
+    <div class="mt-8 grid gap-6">
+      <div><p class="meta mb-3">Home, below the hero</p><AdSlot placement="home" /></div>
+      <div>
+        <p class="meta mb-3">Direct sponsor</p>
+        <AdSlot placement="home">
+          <p class="meta text-accent">Sponsor</p>
+          <p class="font-serif text-xl font-light">Your sponsor's creative sits here, with start and end dates set in config.</p>
+          <a href="/advertise" class="link w-fit text-sm">Advertise with us →</a>
+        </AdSlot>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <!-- Feedback -->
+  <section id="feedback" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Feedback form</h2>
+    <p class="mt-2 text-sm text-muted">Presentational for now. Turnstile and storage get wired in Phase 4.</p>
+    <div class="mt-8"><FeedbackForm demo /></div>
+  </section>
+
+  <hr class="rule mx-auto max-w-6xl" />
+
+  <section id="empty" class="mx-auto max-w-6xl px-4 py-16 sm:px-8">
+    <h2 class="text-[length:var(--t-h2)]">Empty search</h2>
+    <EmptyState />
+  </section>
+</Base>

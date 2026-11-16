@@ -1,0 +1,53 @@
+{
+  "name": "upstream",
+  "private": true,
+  "type": "module",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest run",
+    "pipeline": "tsx pipeline/run.ts",
+    "tier-a-diff": "tsx scripts/sp500-diff.ts",
+    "admin": "tsx scripts/admin.ts",
+    "db:migrate:local": "wrangler d1 migrations apply upstream --local",
+    "db:migrate": "wrangler d1 migrations apply upstream --remote",
+    "pages:dev": "astro build && wrangler pages dev dist",
+    "qa": "node scripts/qa.mjs",
+    "contrast": "node scripts/check-contrast.mjs"
+  },
+  "dependencies": {
+    "@astrojs/react": "7.1.9",
+    "@astrojs/sitemap": "3.7.5",
+    "@fontsource-variable/bodoni-moda": "5.3.0",
+    "@fontsource-variable/geist": "5.3.0",
+    "@fontsource-variable/geist-mono": "5.3.0",
+    "@fontsource/cormorant-garamond": "5.3.0",
+    "@tailwindcss/vite": "4.3.5",
+    "astro": "7.4.12",
+    "minisearch": "^7.2.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sanitize-html": "^2.18.2",
+    "tailwindcss": "4.3.5",
+    "yaml": "^2.9.1"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.12",
+    "@cloudflare/workers-types": "^5.20261116.1",
+    "@resvg/resvg-js": "^2.6.2",
+    "@types/node": "^26.6.6",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.2.3",
+    "@types/sanitize-html": "^2.16.2",
+    "tsx": "^4.23.15",
+    "typescript": "^6.0.0",
+    "vitest": "5.1.0",
+    "wrangler": "^4.162.0"
+  }
+}
