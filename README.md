@@ -2,7 +2,8 @@
 
 Jobs straight from company career pages. Every listing comes from the company's own careers site (or the hiring system that site uses), is checked to be live, and links straight to the official posting.
 
-> Status (2026-11-16): Phases 1–4 working locally. Deploy and the scheduled refresh arrive in Phase 5. See `docs/`.
+> **Live:** https://upstreamjobs.pages.dev · **Code:** https://github.com/traishik/upstream · Refreshes every 6 hours via GitHub Actions.
+> Owner's guide (costs, analytics, SEO, positioning): `docs/owner-guide.md` · QA report: `docs/qa-report.md`.
 
 ## Quick start
 
@@ -139,3 +140,18 @@ Everything is in `config/ads.yaml`:
 - **network**: set `enabled: true`, `client` and per-placement slot ids **only after the network approves the site**. The script is lazy-loaded when a slot nears the screen. The privacy page switches to the network/cookie wording automatically. If you enable it for EU/UK visitors, add a consent banner first (AdSense requires a certified CMP there).
 
 Ads never appear between a reader and an Apply button.
+
+## Tracking performance
+
+- **Visitors, unique users and clicks:** `npm run admin -- stats` (terminal) or `npm run admin -- stats:report` (an HTML dashboard in `exports/`). Data is first-party and anonymous; see `/privacy`.
+- **Traffic sources and page speed (optional):** Cloudflare dashboard → Workers & Pages → upstreamjobs → Metrics → enable **Web Analytics** (free, cookie-free).
+- **Google:** verify the site in [Search Console](https://search.google.com/search-console). Use the HTML-tag method: set `PUBLIC_GOOGLE_SITE_VERIFICATION` as a GitHub Actions variable (or in `.env`), rebuild, then submit `https://upstreamjobs.pages.dev/sitemap-index.xml`.
+
+## Deploying by hand
+
+```bash
+npm run build && npm run qa
+npx wrangler pages deploy dist --project-name upstreamjobs --branch main
+```
+
+GitHub Actions does this automatically after every 6-hour refresh (`.github/workflows/refresh.yml`). Change the schedule there and in `config/pipeline.yaml → cadence`.
