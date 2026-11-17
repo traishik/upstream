@@ -1,23 +1,23 @@
 {
-  "startedAt": "2026-11-17T06:57:19.596Z",
-  "finishedAt": "2026-11-17T09:44:20.694Z",
-  "durationSec": 10021,
+  "startedAt": "2026-11-17T12:47:56.078Z",
+  "finishedAt": "2026-11-17T13:47:42.056Z",
+  "durationSec": 3586,
   "skipDeploy": false,
   "totals": {
-    "published": 50384,
-    "previous": 50111,
-    "fetched": 71228,
-    "us": 55070,
-    "added": 208,
-    "removed": 332,
+    "published": 50534,
+    "previous": 50384,
+    "fetched": 71259,
+    "us": 55043,
+    "added": 62,
+    "removed": 86,
     "deadLinksCaught": 2,
-    "linksChecked": 548,
+    "linksChecked": 219,
     "inconclusiveChecks": 0,
-    "awaitingVerification": 3558,
-    "httpRequests": 4867,
+    "awaitingVerification": 3382,
+    "httpRequests": 4205,
     "files": 275,
-    "indexBytes": 11830553,
-    "manifestBytes": 84555,
+    "indexBytes": 11861275,
+    "manifestBytes": 86928,
     "companiesOk": 69,
     "companiesFailing": 0
   },
@@ -47,21 +47,21 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 152,
-      "ms": 9637
+      "ms": 9475
     },
     {
       "slug": "airbnb",
       "name": "Airbnb",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 206,
+      "fetched": 205,
       "us": 97,
-      "added": 1,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 88,
-      "ms": 1244
+      "ms": 1293
     },
     {
       "slug": "google",
@@ -81,14 +81,14 @@
       "name": "Amazon",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 12329,
-      "us": 12329,
-      "added": 42,
-      "removed": 34,
+      "fetched": 12319,
+      "us": 12319,
+      "added": 6,
+      "removed": 16,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 11535,
-      "ms": 241778
+      "published": 11526,
+      "ms": 240955
     },
     {
       "slug": "amd",
@@ -97,12 +97,12 @@
       "status": "ok",
       "fetched": 729,
       "us": 729,
-      "added": 1,
+      "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 694,
-      "ms": 8827
+      "ms": 9040
     },
     {
       "slug": "american-express",
@@ -111,40 +111,40 @@
       "status": "ok",
       "fetched": 154,
       "us": 154,
-      "added": 2,
-      "removed": 5,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
+      "detailsFetched": 0,
       "published": 153,
-      "ms": 16261
+      "ms": 14834
     },
     {
       "slug": "anduril",
       "name": "Anduril",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2613,
-      "us": 2494,
-      "added": 0,
+      "fetched": 2614,
+      "us": 2495,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 2454,
-      "ms": 2750
+      "published": 2455,
+      "ms": 3068
     },
     {
       "slug": "anthropic",
       "name": "Anthropic",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 661,
+      "fetched": 660,
       "us": 519,
-      "added": 2,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 515,
-      "ms": 758
+      "ms": 855
     },
     {
       "slug": "apple",
@@ -153,12 +153,12 @@
       "status": "ok",
       "fetched": 4603,
       "us": 4603,
-      "added": 12,
-      "removed": 3,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 12,
-      "published": 3214,
-      "ms": 983428
+      "detailsFetched": 0,
+      "published": 3373,
+      "ms": 906938
     },
     {
       "slug": "applied-materials",
@@ -180,12 +180,12 @@
       "status": "ok",
       "fetched": 2009,
       "us": 708,
-      "added": 2,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
+      "detailsFetched": 0,
       "published": 702,
-      "ms": 698417
+      "ms": 705418
     },
     {
       "slug": "berkshire-hathaway",
@@ -212,91 +212,91 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 127,
-      "ms": 289
+      "ms": 408
     },
     {
       "slug": "broadcom",
       "name": "Broadcom",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 412,
+      "fetched": 414,
       "us": 249,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 239,
-      "ms": 21382
+      "ms": 21465
     },
     {
       "slug": "caterpillar",
       "name": "Caterpillar",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 450,
-      "us": 450,
-      "added": 1,
-      "removed": 28,
+      "fetched": 448,
+      "us": 448,
+      "added": 0,
+      "removed": 2,
       "dead": 0,
-      "detailsFetched": 1,
-      "published": 418,
-      "ms": 25920
+      "detailsFetched": 0,
+      "published": 416,
+      "ms": 24723
     },
     {
       "slug": "chevron",
       "name": "Chevron",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 160,
-      "us": 47,
+      "fetched": 163,
+      "us": 46,
       "added": 0,
-      "removed": 3,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 46,
-      "ms": 8353
+      "published": 45,
+      "ms": 9438
     },
     {
       "slug": "cisco",
       "name": "Cisco",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1466,
-      "us": 517,
+      "fetched": 1463,
+      "us": 516,
       "added": 1,
-      "removed": 5,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 5,
-      "published": 513,
-      "ms": 79289
+      "published": 512,
+      "ms": 80109
     },
     {
       "slug": "citigroup",
       "name": "Citigroup",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1398,
-      "us": 1398,
-      "added": 6,
-      "removed": 13,
+      "fetched": 1397,
+      "us": 1397,
+      "added": 2,
+      "removed": 3,
       "dead": 0,
-      "detailsFetched": 6,
-      "published": 1182,
-      "ms": 80540
+      "detailsFetched": 2,
+      "published": 1181,
+      "ms": 78760
     },
     {
       "slug": "cloudflare",
       "name": "Cloudflare",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 471,
-      "us": 273,
-      "added": 0,
+      "fetched": 475,
+      "us": 274,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 272,
-      "ms": 1190
+      "published": 273,
+      "ms": 604
     },
     {
       "slug": "coca-cola",
@@ -306,25 +306,25 @@
       "fetched": 91,
       "us": 91,
       "added": 0,
-      "removed": 4,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 84,
-      "ms": 6673
+      "ms": 6642
     },
     {
       "slug": "coinbase",
       "name": "Coinbase",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 260,
+      "fetched": 259,
       "us": 189,
-      "added": 1,
-      "removed": 2,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 188,
-      "ms": 1940
+      "ms": 1514
     },
     {
       "slug": "costco",
@@ -344,42 +344,42 @@
       "name": "CrowdStrike",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 198,
-      "us": 198,
-      "added": 2,
-      "removed": 3,
+      "fetched": 211,
+      "us": 211,
+      "added": 13,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
-      "published": 197,
-      "ms": 13276
+      "detailsFetched": 13,
+      "published": 210,
+      "ms": 25913
     },
     {
       "slug": "databricks",
       "name": "Databricks",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 892,
+      "fetched": 891,
       "us": 465,
       "added": 1,
       "removed": 0,
       "dead": 1,
       "detailsFetched": 0,
       "published": 444,
-      "ms": 1364
+      "ms": 1465
     },
     {
       "slug": "datadog",
       "name": "Datadog",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 382,
+      "fetched": 380,
       "us": 210,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 209,
-      "ms": 346
+      "ms": 2416
     },
     {
       "slug": "discord",
@@ -388,12 +388,12 @@
       "status": "ok",
       "fetched": 25,
       "us": 25,
-      "added": 1,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 25,
-      "ms": 95
+      "ms": 109
     },
     {
       "slug": "doordash",
@@ -402,12 +402,12 @@
       "status": "ok",
       "fetched": 426,
       "us": 423,
-      "added": 1,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 351,
-      "ms": 686
+      "ms": 745
     },
     {
       "slug": "dropbox",
@@ -421,7 +421,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 29,
-      "ms": 910
+      "ms": 1880
     },
     {
       "slug": "eli-lilly",
@@ -448,7 +448,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 120,
-      "ms": 1093
+      "ms": 1080
     },
     {
       "slug": "exxon-mobil",
@@ -475,35 +475,35 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 93,
-      "ms": 951
+      "ms": 915
     },
     {
       "slug": "ge-aerospace",
       "name": "GE Aerospace",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 589,
+      "fetched": 588,
       "us": 46,
-      "added": 1,
-      "removed": 2,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 4,
       "published": 45,
-      "ms": 34286
+      "ms": 34289
     },
     {
       "slug": "ge-vernova",
       "name": "GE Vernova",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2141,
+      "fetched": 2138,
       "us": 303,
       "added": 0,
-      "removed": 2,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 67,
       "published": 301,
-      "ms": 188324
+      "ms": 193992
     },
     {
       "slug": "goldman-sachs",
@@ -525,12 +525,12 @@
       "status": "ok",
       "fetched": 933,
       "us": 933,
-      "added": 1,
+      "added": 0,
       "removed": 0,
       "dead": 0,
-      "detailsFetched": 1,
+      "detailsFetched": 0,
       "published": 747,
-      "ms": 51787
+      "ms": 49003
     },
     {
       "slug": "ibm",
@@ -557,21 +557,21 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 68,
-      "ms": 1045
+      "ms": 985
     },
     {
       "slug": "intel",
       "name": "Intel",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 875,
-      "us": 453,
-      "added": 4,
-      "removed": 1,
+      "fetched": 884,
+      "us": 456,
+      "added": 3,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 8,
-      "published": 443,
-      "ms": 53576
+      "detailsFetched": 7,
+      "published": 446,
+      "ms": 53963
     },
     {
       "slug": "intuit",
@@ -591,28 +591,28 @@
       "name": "Johnson & Johnson",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1735,
-      "us": 590,
-      "added": 38,
-      "removed": 32,
+      "fetched": 1757,
+      "us": 587,
+      "added": 0,
+      "removed": 3,
       "dead": 0,
-      "detailsFetched": 38,
-      "published": 574,
-      "ms": 125547
+      "detailsFetched": 0,
+      "published": 571,
+      "ms": 92688
     },
     {
       "slug": "jpmorgan-chase",
       "name": "JPMorgan Chase",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 5124,
-      "us": 5124,
-      "added": 5,
-      "removed": 18,
+      "fetched": 5116,
+      "us": 5116,
+      "added": 6,
+      "removed": 13,
       "dead": 0,
       "detailsFetched": 400,
-      "published": 4248,
-      "ms": 678974
+      "published": 4245,
+      "ms": 683234
     },
     {
       "slug": "kla",
@@ -621,12 +621,12 @@
       "status": "ok",
       "fetched": 470,
       "us": 469,
-      "added": 1,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
+      "detailsFetched": 1,
       "published": 462,
-      "ms": 30545
+      "ms": 26300
     },
     {
       "slug": "lam-research",
@@ -662,39 +662,39 @@
       "fetched": 144,
       "us": 75,
       "added": 0,
-      "removed": 1,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 74,
-      "ms": 472
+      "ms": 776
     },
     {
       "slug": "mastercard",
       "name": "Mastercard",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 822,
+      "fetched": 818,
       "us": 238,
       "added": 0,
-      "removed": 1,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 3,
       "published": 234,
-      "ms": 45628
+      "ms": 45360
     },
     {
       "slug": "merck",
       "name": "Merck",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 777,
+      "fetched": 805,
       "us": 258,
-      "added": 3,
-      "removed": 27,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 6,
+      "detailsFetched": 3,
       "published": 252,
-      "ms": 45462
+      "ms": 44345
     },
     {
       "slug": "meta",
@@ -747,7 +747,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 153,
-      "ms": 758
+      "ms": 724
     },
     {
       "slug": "morgan-stanley",
@@ -761,7 +761,7 @@
       "dead": 0,
       "detailsFetched": 1,
       "published": 823,
-      "ms": 45495
+      "ms": 45759
     },
     {
       "slug": "netflix",
@@ -788,21 +788,21 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 77,
-      "ms": 1021
+      "ms": 1022
     },
     {
       "slug": "nvidia",
       "name": "NVIDIA",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2721,
+      "fetched": 2718,
       "us": 1412,
-      "added": 2,
-      "removed": 2,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
+      "detailsFetched": 0,
       "published": 1375,
-      "ms": 149497
+      "ms": 152853
     },
     {
       "slug": "openai",
@@ -811,26 +811,26 @@
       "status": "ok",
       "fetched": 840,
       "us": 654,
-      "added": 8,
-      "removed": 2,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 632,
-      "ms": 579
+      "ms": 539
     },
     {
       "slug": "oracle",
       "name": "Oracle",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2115,
-      "us": 2114,
-      "added": 14,
-      "removed": 10,
+      "fetched": 2114,
+      "us": 2113,
+      "added": 4,
+      "removed": 5,
       "dead": 0,
-      "detailsFetched": 162,
-      "published": 2083,
-      "ms": 279853
+      "detailsFetched": 4,
+      "published": 2082,
+      "ms": 123033
     },
     {
       "slug": "palantir",
@@ -844,49 +844,49 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 234,
-      "ms": 1655
+      "ms": 2045
     },
     {
       "slug": "palo-alto-networks",
       "name": "Palo Alto Networks",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1351,
+      "fetched": 1354,
       "us": 589,
       "added": 0,
-      "removed": 1,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 583,
-      "ms": 69501
+      "ms": 69831
     },
     {
       "slug": "paypal",
       "name": "PayPal",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 347,
+      "fetched": 350,
       "us": 215,
-      "added": 2,
-      "removed": 1,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 2,
+      "detailsFetched": 0,
       "published": 213,
-      "ms": 20424
+      "ms": 18926
     },
     {
       "slug": "perplexity",
       "name": "Perplexity",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 147,
+      "fetched": 148,
       "us": 127,
-      "added": 3,
+      "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 126,
-      "ms": 142
+      "ms": 191
     },
     {
       "slug": "philip-morris-international",
@@ -908,12 +908,12 @@
       "status": "ok",
       "fetched": 167,
       "us": 124,
-      "added": 2,
+      "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 121,
-      "ms": 884
+      "ms": 818
     },
     {
       "slug": "plaid",
@@ -927,7 +927,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 130,
-      "ms": 948
+      "ms": 929
     },
     {
       "slug": "procter-and-gamble",
@@ -941,7 +941,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 213,
-      "ms": 14186
+      "ms": 14107
     },
     {
       "slug": "qualcomm",
@@ -968,7 +968,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 165,
-      "ms": 170
+      "ms": 266
     },
     {
       "slug": "reddit",
@@ -982,21 +982,21 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 130,
-      "ms": 899
+      "ms": 894
     },
     {
       "slug": "rippling",
       "name": "Rippling",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 413,
+      "fetched": 414,
       "us": 226,
       "added": 1,
       "removed": 0,
       "dead": 1,
       "detailsFetched": 1,
       "published": 225,
-      "ms": 9114
+      "ms": 9121
     },
     {
       "slug": "robinhood",
@@ -1010,7 +1010,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 147,
-      "ms": 205
+      "ms": 2063
     },
     {
       "slug": "roblox",
@@ -1020,25 +1020,25 @@
       "fetched": 265,
       "us": 245,
       "added": 0,
-      "removed": 1,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 244,
-      "ms": 1015
+      "ms": 1048
     },
     {
       "slug": "rtx",
       "name": "RTX",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 4393,
-      "us": 3496,
-      "added": 19,
-      "removed": 34,
+      "fetched": 4396,
+      "us": 3489,
+      "added": 7,
+      "removed": 14,
       "dead": 0,
       "detailsFetched": 400,
-      "published": 3397,
-      "ms": 678692
+      "published": 3390,
+      "ms": 698505
     },
     {
       "slug": "salesforce",
@@ -1048,11 +1048,11 @@
       "fetched": 554,
       "us": 554,
       "added": 0,
-      "removed": 2,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 549,
-      "ms": 29383
+      "ms": 29376
     },
     {
       "slug": "scale-ai",
@@ -1066,7 +1066,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 123,
-      "ms": 196
+      "ms": 214
     },
     {
       "slug": "servicenow",
@@ -1089,53 +1089,53 @@
       "fetched": 215,
       "us": 141,
       "added": 0,
-      "removed": 1,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 137,
-      "ms": 11644
+      "ms": 11641
     },
     {
       "slug": "snowflake",
       "name": "Snowflake",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 374,
+      "fetched": 379,
       "us": 232,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 231,
-      "ms": 1189
+      "ms": 1236
     },
     {
       "slug": "spacex",
       "name": "SpaceX",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2788,
-      "us": 2785,
-      "added": 10,
-      "removed": 4,
+      "fetched": 2799,
+      "us": 2796,
+      "added": 11,
+      "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 2732,
-      "ms": 2135
+      "published": 2743,
+      "ms": 2307
     },
     {
       "slug": "stripe",
       "name": "Stripe",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 791,
-      "us": 392,
-      "added": 0,
+      "fetched": 794,
+      "us": 393,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 392,
-      "ms": 587
+      "published": 393,
+      "ms": 554
     },
     {
       "slug": "tesla",
@@ -1155,28 +1155,28 @@
       "name": "Texas Instruments",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 509,
+      "fetched": 510,
       "us": 509,
-      "added": 1,
+      "added": 0,
       "removed": 0,
       "dead": 0,
-      "detailsFetched": 1,
+      "detailsFetched": 0,
       "published": 506,
-      "ms": 38326
+      "ms": 37690
     },
     {
       "slug": "tiktok",
       "name": "TikTok",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 4240,
-      "us": 1821,
-      "added": 8,
-      "removed": 6,
+      "fetched": 4218,
+      "us": 1816,
+      "added": 2,
+      "removed": 7,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 1809,
-      "ms": 52827
+      "published": 1804,
+      "ms": 48774
     },
     {
       "slug": "uber",
@@ -1209,14 +1209,14 @@
       "name": "Visa",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 299,
-      "us": 299,
+      "fetched": 298,
+      "us": 298,
       "added": 1,
       "removed": 2,
       "dead": 0,
       "detailsFetched": 1,
       "published": 298,
-      "ms": 17533
+      "ms": 17325
     },
     {
       "slug": "walmart",
@@ -1236,14 +1236,14 @@
       "name": "Wells Fargo",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1161,
-      "us": 1161,
-      "added": 2,
-      "removed": 70,
+      "fetched": 1144,
+      "us": 1144,
+      "added": 1,
+      "removed": 18,
       "dead": 0,
-      "detailsFetched": 2,
-      "published": 562,
-      "ms": 62488
+      "detailsFetched": 1,
+      "published": 556,
+      "ms": 63216
     },
     {
       "slug": "workday",
@@ -1252,12 +1252,12 @@
       "status": "ok",
       "fetched": 182,
       "us": 179,
-      "added": 2,
-      "removed": 6,
+      "added": 0,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 5,
+      "detailsFetched": 3,
       "published": 177,
-      "ms": 27105
+      "ms": 24711
     },
     {
       "slug": "xai",
@@ -1266,12 +1266,12 @@
       "status": "ok",
       "fetched": 302,
       "us": 280,
-      "added": 4,
+      "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 271,
-      "ms": 341
+      "ms": 474
     },
     {
       "slug": "zoom",
@@ -1285,7 +1285,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 34,
-      "ms": 3465
+      "ms": 3478
     }
   ],
   "unclassified": [
@@ -1851,6 +1851,10 @@
     },
     {
       "company": "intel",
+      "title": "Memory IP Architect"
+    },
+    {
+      "company": "intel",
       "title": "Senior Director - Supplier Quality and Reliability"
     },
     {
@@ -2166,478 +2170,6 @@
       "title": "2024878 Consulting Engineering Technical Leader - Service Provider"
     },
     {
-      "company": "chevron",
-      "title": "E&I Specialist A"
-    },
-    {
-      "company": "chevron",
-      "title": "Field Specialist B"
-    },
-    {
-      "company": "chevron",
-      "title": "Principal Solution Architect"
-    },
-    {
-      "company": "chevron",
-      "title": "Senior Corporate Negotiator"
-    },
-    {
-      "company": "chevron",
-      "title": "Senior Corporate Negotiator"
-    },
-    {
-      "company": "chevron",
-      "title": "Treasurer Executive Assistant"
-    },
-    {
-      "company": "chevron",
-      "title": "Waterborne Scheduler"
-    },
-    {
-      "company": "chevron",
-      "title": "Senior Marine Terminals Advisor"
-    },
-    {
-      "company": "chevron",
-      "title": "Field Specialist, Night"
-    },
-    {
-      "company": "chevron",
-      "title": "Firefighter Trainee"
-    },
-    {
-      "company": "chevron",
-      "title": "Able Bodied Seaman"
-    },
-    {
-      "company": "chevron",
-      "title": "Lead Environmental Specialist - Waste & Water"
-    },
-    {
-      "company": "chevron",
-      "title": "Ordinary Seaman"
-    },
-    {
-      "company": "chevron",
-      "title": "Galley Utility/Messman"
-    },
-    {
-      "company": "chevron",
-      "title": "SAP MDG Senior Architect"
-    },
-    {
-      "company": "chevron",
-      "title": "Field Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Industrial Painter - 2nd & 3rd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Weld Trainee"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Finish Grinder - 2nd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Director, Rental National Accounts & Major Projects"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Customer Solutions Representative"
-    },
-    {
-      "company": "caterpillar",
-      "title": "New Parts Pricing Manager"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Sr Pricing Manager"
-    },
-    {
-      "company": "caterpillar",
-      "title": "PDC Team Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Control System Specialist – Functional Safety"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Control System Specialist – Functional Safety"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Custom Painter - All Shifts"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Program Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Technology Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Team Lead - 2nd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Perception Component Platform Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Oil & Gas Engineering Technical Lead - Electric Power Generation Systems"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Digital Adoption Representative - Latin America & Growth Regions (Bilingual)"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Digital Adoption Representative - Global Dealer Network"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Manager, Digital Product"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Regional EHS Professional"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader (Telehandler)"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Training Consultant - Cold Planers & Reclaimer/Stabilizer Products"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Training Consultant - Asphalt Paver & Compaction Products"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Robotics & Autonomy Validation Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Autonomy Engineering Specialist - Perception"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Mining Specialist - Autonomous Hauling Technology"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Manager Digital Product; Dynamics 365"
-    },
-    {
-      "company": "caterpillar",
-      "title": "NPI Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Learning Experience & Adoption Consultant"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Specialist - 1st Shift - East Peoria Bldg KK - Supplemental"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Product Consultant"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Quality Specialist- 2nd and 3rd Shift-East Peoria Bldg KK"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Connectivity Component Platform Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Robotics Platform Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Digital Experience Consultant"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Strategic Project Consultant"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Application Specialist for Work Tools"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Lead D365 Deployment Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Pressure Check and Repair Specialist- I Third Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Control Systems Senior Team Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Solution Owner – MineStar Onboard and Terrain"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Service Technology Consultant"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Autonomy Application Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Competitive Intelligence Senior Consultant, Power & Energy"
-    },
-    {
-      "company": "caterpillar",
-      "title": "OneStream Solution Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Grinding Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Senior Performance/Simulation/Application Engineering Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Robotics Platform Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Specialist - 2nd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Robotics Platform Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Specialist - 3rd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Specialist - AWS Shift (Thursday-Sunday)"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Team Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Part-Time Intern - Engineering"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Machine Performance & Controls Engineering specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Lead Data Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Lean Quality Manager"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Performance/Simulation/Application Engineering Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Products Configuration Specialist - Earthmoving Division"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Engineering Project Team Leader"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Quality Specialist- 3rd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Patternmaker- 2nd and 3rd Shift Mapleton Cast Metal Org. (CMO)"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Perception Architect"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Edge Architect - Platform"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Field Service Specialist"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Handler - Full Time / Multiple Shifts"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Industrial Paint Specialist - 3rd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Heavy Industrial Shipping Specialist - 1st or 2nd Shift"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Melting Specialist- 2nd and 3rd Shift- Cast metal Org. (CMO)"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Handler - Picker"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Principal Architect – Digital Twin"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Manager, Engineering - Metallurgy"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Material Handler - FlexWork"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Metal Treating Specialist - 2nd and 3rd Shifts - East Peoria Bldg KK - Supplemental"
-    },
-    {
-      "company": "caterpillar",
-      "title": "Scenario Framework & Simulation Orchestration Lead"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Summer Corporate Intern - Engineering"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Corporate Internship Program Materials"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Rotational Product Development - Materials"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Corporate Internship Program Welding"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Rotational Product Development Program-Welding"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Corporate Parallel Co-op Program"
-    },
-    {
-      "company": "caterpillar",
-      "title": "2027 Engineering Rotational Development Program (ERDP) - Product Development Track"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, Franchise Intelligence"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Visual Merchandising & Product Coordinator"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Senior Director, QSR Customer Leadership (Baltimore, Richmond)"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Automation and Controls Engineering Tech"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Retail Execution Specialist - Phoenix"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Sr. Executive Administrative Assistant"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, Global Flavor Creation"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Senior Manager, Stills & Global Juice (Consumer Research & Sensory Science"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Guest Experience Associate (Part-Time)"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Retail Lead Associate (Coca-Cola Store Disney Springs)"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, Revenue Growth Management Franchise Execution (Florida)"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Innovation Tech Lead"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Senior Director, Beverage Process Research and Capabilities"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, RGM Execution Walmart Digital an Still"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, RGM Franchise Execution Southwest"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, Data Enablement & Standards"
-    },
-    {
       "company": "johnson-and-johnson",
       "title": "Executive Area Business Specialist, Solid Tumor, GU - Florida South - Johnson & Johnson Innovative Medicine"
     },
@@ -2888,6 +2420,474 @@
     {
       "company": "johnson-and-johnson",
       "title": "Associate Director, Forecasting - Lung"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Sr. Manager, Pooled Screening Core - CAR Screening & Lead Selection, Cell & Genetic Medicines"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Worldwide Education (Remote, US) Johnson and Johnson MedTech, Electrophysiology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Commercial Management, Monarch Urology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Director, Innovation & Transformation"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Executive Administrative Assistant"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Director, GPO & Enab Capab, Systems"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Director – Lymphoid & Myeloid Malignancies (LMM) - Eastern US"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Director – Lymphoid & Myeloid Malignancies (LMM) - Western US"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Manager, External Quality Business Processes and Strategic Projects"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Key Account Specialist, Dermatology (Jacksonville, FL) – Johnson & Johnson Innovative Medicine"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Sr Supv Quality Control"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "TM (Inland Empire/San Diego)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Immunology Learning Portfolio Partner - Horsham, PA"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Package Development Manager"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Neuroscience – (San Diego, CA) – Patient Engagement & Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Commercial Learning Portfolio Partner, Immunology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Rheumatology (Atlanta, GA) Patient Engagement and Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Executive Oncology Area Business Specialist (Northern California) - Johnson & Johnson Innovative Medicine"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "WithMe CRM and Portal Data Lead"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Innovation Excellence Co-op"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager - Neuroscience, (Raleigh, NC) - Patient Engagement and Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Global Real-World Evidence, Oncology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Director, Translational Sciences-Immunology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Neuroscience – (Oklahoma City, OK) – Patient Engagement & Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Oncology, Lung Head & Neck"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Oncology, Lung Head & Neck"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Oncology, Lung Head & Neck"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "District Manager Oncology, Gulf Coast Region"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Surgical Innovation Manager, Sports"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Key Account Specialist, Dermatology (Seattle WA & Portland OR) – Johnson & Johnson Innovative Medicine"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "SenMgr, IM TranSCend Source"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Global Cross-Border Lead"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Trial Supply Execution"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Budget & Performance Management Lead"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Process & Personnel Qualification Management Expert"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Project & Portfolio Leader"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Sr. Trial Manager, Early Development, Oncology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Sr Manager Strategic Capacity Management"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Immunology Dermatology (Dayton, Ohio) Patient Engagement and Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Neuroscience – (Salt Lake City, UT) – Patient Engagement & Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Gastroenterology (Austin/San Antonio, Texas) Patient Engagement and Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Sr Field Coordinator (Remote) Johnson and Johnson MedTech, Electrophysiology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Contracts - OTTAVA"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Director, Omics Enabling Platforms"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Digital Specialist Trauma"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Product Safety Head (Sr Director) - Solid Tumors"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Manager, Biophysics, Higher-Order Structure & Separations"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Manager, MedTech SCT Surgery Plan Leader"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "MSAT Biotherapeutics Drug Product Senior Manager"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Economic Modeling"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Capital Equipment Specialist - Chicago, IL – Johnson & Johnson MedTech - Vision Surgical"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "District Manager, Oncology Solid Tumor GU"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Immunology Autoantibody Diseases, Gulf Coast"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager, Operational Excellence CAR T"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "District Manager, Immunology Gastroenterology, South Ohio"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Hematology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Manager, Data Transformation - Neuroscience"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Real World Value and Evidence – Hematology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Field Reimbursement Manager, Neuroscience – (Kansas City, MO) – Patient Engagement & Customer Solutions (PECS)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Manager CSV-Execution Automation Systems"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Associate Director, Real World Value & Evidence (RWV&E) – Hematology"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior District Manager, Immunology Autoantibody Diseases, Pacific Northwest"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Global Market Access Summer Associate"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "TM (Seattle, WA)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "TM (Los Angeles)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "2027 Innovative Medicine Commercial Leadership Development Program (CLDP)- Summer Internship"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "SFA, Close and Consolidations"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Category Manager Direct Precision Materials"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "ASAM/ SAM - Omaha"
+    },
+    {
+      "company": "chevron",
+      "title": "E&I Specialist A"
+    },
+    {
+      "company": "chevron",
+      "title": "Field Specialist B"
+    },
+    {
+      "company": "chevron",
+      "title": "Principal Solution Architect"
+    },
+    {
+      "company": "chevron",
+      "title": "Senior Corporate Negotiator"
+    },
+    {
+      "company": "chevron",
+      "title": "Senior Corporate Negotiator"
+    },
+    {
+      "company": "chevron",
+      "title": "Treasurer Executive Assistant"
+    },
+    {
+      "company": "chevron",
+      "title": "Waterborne Scheduler"
+    },
+    {
+      "company": "chevron",
+      "title": "Senior Marine Terminals Advisor"
+    },
+    {
+      "company": "chevron",
+      "title": "Field Specialist, Night"
+    },
+    {
+      "company": "chevron",
+      "title": "Firefighter Trainee"
+    },
+    {
+      "company": "chevron",
+      "title": "Able Bodied Seaman"
+    },
+    {
+      "company": "chevron",
+      "title": "Lead Environmental Specialist - Waste & Water"
+    },
+    {
+      "company": "chevron",
+      "title": "Ordinary Seaman"
+    },
+    {
+      "company": "chevron",
+      "title": "Galley Utility/Messman"
+    },
+    {
+      "company": "chevron",
+      "title": "SAP MDG Senior Architect"
+    },
+    {
+      "company": "chevron",
+      "title": "Field Specialist"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, Franchise Intelligence"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Visual Merchandising & Product Coordinator"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Senior Director, QSR Customer Leadership (Baltimore, Richmond)"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Automation and Controls Engineering Tech"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Retail Execution Specialist - Phoenix"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Sr. Executive Administrative Assistant"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, Global Flavor Creation"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Senior Manager, Stills & Global Juice (Consumer Research & Sensory Science"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Guest Experience Associate (Part-Time)"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Retail Lead Associate (Coca-Cola Store Disney Springs)"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, Revenue Growth Management Franchise Execution (Florida)"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Innovation Tech Lead"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Senior Director, Beverage Process Research and Capabilities"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, RGM Execution Walmart Digital an Still"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, RGM Franchise Execution Southwest"
+    },
+    {
+      "company": "coca-cola",
+      "title": "Director, Data Enablement & Standards"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Industrial Painter - 2nd & 3rd Shift"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Weld Trainee"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Engineering Project Team Leader"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Finish Grinder - 2nd Shift"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Senior Director, Rental National Accounts & Major Projects"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Engineering Project Team Leader"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Customer Solutions Representative"
+    },
+    {
+      "company": "caterpillar",
+      "title": "New Parts Pricing Manager"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Sr Pricing Manager"
+    },
+    {
+      "company": "caterpillar",
+      "title": "PDC Team Lead"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Control System Specialist – Functional Safety"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Senior Control System Specialist – Functional Safety"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Custom Painter - All Shifts"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Program Specialist"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Technology Team Leader"
+    },
+    {
+      "company": "caterpillar",
+      "title": "Team Lead - 2nd Shift"
     }
   ]
 }
