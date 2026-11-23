@@ -1,23 +1,23 @@
 {
-  "startedAt": "2026-11-23T12:56:51.848Z",
-  "finishedAt": "2026-11-23T14:08:43.079Z",
-  "durationSec": 4311,
+  "startedAt": "2026-11-23T18:48:18.776Z",
+  "finishedAt": "2026-11-23T20:58:59.912Z",
+  "durationSec": 7841,
   "skipDeploy": false,
   "totals": {
-    "published": 50448,
-    "previous": 50525,
-    "fetched": 71441,
-    "us": 55247,
-    "added": 245,
-    "removed": 117,
-    "deadLinksCaught": 223,
-    "linksChecked": 8534,
+    "published": 50529,
+    "previous": 50448,
+    "fetched": 71542,
+    "us": 55343,
+    "added": 872,
+    "removed": 555,
+    "deadLinksCaught": 226,
+    "linksChecked": 4358,
     "inconclusiveChecks": 0,
-    "awaitingVerification": 3423,
-    "httpRequests": 11304,
+    "awaitingVerification": 3433,
+    "httpRequests": 7611,
     "files": 275,
-    "indexBytes": 11830957,
-    "manifestBytes": 83226,
+    "indexBytes": 11848928,
+    "manifestBytes": 85128,
     "companiesOk": 69,
     "companiesFailing": 0
   },
@@ -40,28 +40,28 @@
       "name": "Adobe",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 153,
-      "us": 153,
-      "added": 0,
-      "removed": 0,
+      "fetched": 154,
+      "us": 154,
+      "added": 2,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 153,
-      "ms": 9898
+      "detailsFetched": 2,
+      "published": 154,
+      "ms": 11326
     },
     {
       "slug": "airbnb",
       "name": "Airbnb",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 200,
-      "us": 98,
+      "fetched": 194,
+      "us": 93,
       "added": 0,
-      "removed": 0,
+      "removed": 5,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 89,
-      "ms": 1223
+      "published": 85,
+      "ms": 1164
     },
     {
       "slug": "google",
@@ -81,14 +81,14 @@
       "name": "Amazon",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 12509,
-      "us": 12509,
-      "added": 5,
-      "removed": 10,
+      "fetched": 12503,
+      "us": 12503,
+      "added": 104,
+      "removed": 110,
       "dead": 0,
       "detailsFetched": 0,
       "published": 11711,
-      "ms": 240482
+      "ms": 239162
     },
     {
       "slug": "amd",
@@ -97,68 +97,68 @@
       "status": "ok",
       "fetched": 637,
       "us": 637,
-      "added": 0,
-      "removed": 0,
+      "added": 3,
+      "removed": 3,
       "dead": 0,
       "detailsFetched": 0,
       "published": 606,
-      "ms": 7837
+      "ms": 7800
     },
     {
       "slug": "american-express",
       "name": "American Express",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 180,
-      "us": 179,
-      "added": 0,
-      "removed": 1,
+      "fetched": 200,
+      "us": 199,
+      "added": 20,
+      "removed": 0,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 177,
-      "ms": 17421
+      "detailsFetched": 20,
+      "published": 197,
+      "ms": 40826
     },
     {
       "slug": "anduril",
       "name": "Anduril",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2632,
-      "us": 2507,
-      "added": 0,
-      "removed": 0,
+      "fetched": 2622,
+      "us": 2496,
+      "added": 8,
+      "removed": 19,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 2468,
-      "ms": 4972
+      "published": 2457,
+      "ms": 5653
     },
     {
       "slug": "anthropic",
       "name": "Anthropic",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 634,
+      "fetched": 633,
       "us": 493,
-      "added": 0,
-      "removed": 0,
+      "added": 2,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
       "published": 490,
-      "ms": 3968
+      "ms": 600
     },
     {
       "slug": "apple",
       "name": "Apple",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 4589,
-      "us": 4589,
-      "added": 0,
-      "removed": 0,
+      "fetched": 4591,
+      "us": 4591,
+      "added": 2,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 3336,
-      "ms": 305243
+      "detailsFetched": 2,
+      "published": 3337,
+      "ms": 260825
     },
     {
       "slug": "applied-materials",
@@ -178,14 +178,14 @@
       "name": "Bank of America",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1988,
-      "us": 668,
-      "added": 1,
-      "removed": 0,
+      "fetched": 1972,
+      "us": 671,
+      "added": 14,
+      "removed": 11,
       "dead": 0,
-      "detailsFetched": 1,
-      "published": 664,
-      "ms": 101671
+      "detailsFetched": 14,
+      "published": 667,
+      "ms": 113559
     },
     {
       "slug": "berkshire-hathaway",
@@ -205,126 +205,126 @@
       "name": "Block",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 184,
+      "fetched": 183,
       "us": 122,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 121,
-      "ms": 283
+      "ms": 206
     },
     {
       "slug": "broadcom",
       "name": "Broadcom",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 446,
-      "us": 264,
-      "added": 0,
-      "removed": 0,
+      "fetched": 450,
+      "us": 268,
+      "added": 5,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 254,
-      "ms": 23311
+      "detailsFetched": 5,
+      "published": 258,
+      "ms": 28232
     },
     {
       "slug": "caterpillar",
       "name": "Caterpillar",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 419,
-      "us": 419,
-      "added": 0,
-      "removed": 0,
+      "fetched": 447,
+      "us": 447,
+      "added": 29,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 391,
-      "ms": 22622
+      "detailsFetched": 29,
+      "published": 415,
+      "ms": 54668
     },
     {
       "slug": "chevron",
       "name": "Chevron",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 145,
+      "fetched": 143,
       "us": 39,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 37,
-      "ms": 8343
+      "ms": 8352
     },
     {
       "slug": "cisco",
       "name": "Cisco",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1387,
-      "us": 482,
-      "added": 0,
-      "removed": 14,
+      "fetched": 1396,
+      "us": 490,
+      "added": 15,
+      "removed": 7,
       "dead": 0,
-      "detailsFetched": 3,
-      "published": 477,
-      "ms": 73275
+      "detailsFetched": 18,
+      "published": 485,
+      "ms": 88328
     },
     {
       "slug": "citigroup",
       "name": "Citigroup",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1423,
-      "us": 1423,
-      "added": 1,
-      "removed": 1,
+      "fetched": 1444,
+      "us": 1444,
+      "added": 43,
+      "removed": 22,
       "dead": 0,
-      "detailsFetched": 1,
-      "published": 1202,
-      "ms": 79027
+      "detailsFetched": 43,
+      "published": 1222,
+      "ms": 120750
     },
     {
       "slug": "cloudflare",
       "name": "Cloudflare",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 501,
-      "us": 290,
-      "added": 0,
-      "removed": 1,
+      "fetched": 504,
+      "us": 289,
+      "added": 2,
+      "removed": 3,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 288,
-      "ms": 1208
+      "published": 287,
+      "ms": 1156
     },
     {
       "slug": "coca-cola",
       "name": "Coca-Cola",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 73,
-      "us": 73,
-      "added": 0,
-      "removed": 0,
+      "fetched": 75,
+      "us": 75,
+      "added": 5,
+      "removed": 3,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 67,
-      "ms": 5691
+      "detailsFetched": 5,
+      "published": 69,
+      "ms": 10306
     },
     {
       "slug": "coinbase",
       "name": "Coinbase",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 251,
+      "fetched": 250,
       "us": 188,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 187,
-      "ms": 1099
+      "ms": 1487
     },
     {
       "slug": "costco",
@@ -344,42 +344,42 @@
       "name": "CrowdStrike",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 200,
-      "us": 200,
-      "added": 0,
-      "removed": 1,
+      "fetched": 195,
+      "us": 195,
+      "added": 5,
+      "removed": 10,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 199,
-      "ms": 11529
+      "detailsFetched": 5,
+      "published": 194,
+      "ms": 16307
     },
     {
       "slug": "databricks",
       "name": "Databricks",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 891,
-      "us": 473,
-      "added": 1,
-      "removed": 0,
+      "fetched": 883,
+      "us": 472,
+      "added": 2,
+      "removed": 2,
       "dead": 1,
       "detailsFetched": 0,
-      "published": 452,
-      "ms": 1164
+      "published": 451,
+      "ms": 1976
     },
     {
       "slug": "datadog",
       "name": "Datadog",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 386,
+      "fetched": 385,
       "us": 211,
-      "added": 2,
-      "removed": 0,
+      "added": 1,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
       "published": 210,
-      "ms": 1182
+      "ms": 1251
     },
     {
       "slug": "discord",
@@ -393,7 +393,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 29,
-      "ms": 99
+      "ms": 64
     },
     {
       "slug": "doordash",
@@ -402,12 +402,12 @@
       "status": "ok",
       "fetched": 408,
       "us": 406,
-      "added": 0,
-      "removed": 0,
+      "added": 1,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
       "published": 335,
-      "ms": 599
+      "ms": 681
     },
     {
       "slug": "dropbox",
@@ -421,7 +421,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 32,
-      "ms": 1788
+      "ms": 1912
     },
     {
       "slug": "eli-lilly",
@@ -448,7 +448,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 118,
-      "ms": 1058
+      "ms": 1050
     },
     {
       "slug": "exxon-mobil",
@@ -468,42 +468,42 @@
       "name": "Figma",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 147,
-      "us": 94,
-      "added": 0,
+      "fetched": 148,
+      "us": 95,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 94,
-      "ms": 1992
+      "published": 95,
+      "ms": 921
     },
     {
       "slug": "ge-aerospace",
       "name": "GE Aerospace",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 616,
-      "us": 50,
-      "added": 0,
-      "removed": 0,
+      "fetched": 622,
+      "us": 48,
+      "added": 1,
+      "removed": 3,
       "dead": 0,
-      "detailsFetched": 4,
-      "published": 49,
-      "ms": 35384
+      "detailsFetched": 5,
+      "published": 47,
+      "ms": 37609
     },
     {
       "slug": "ge-vernova",
       "name": "GE Vernova",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2140,
-      "us": 317,
-      "added": 0,
-      "removed": 0,
+      "fetched": 2164,
+      "us": 327,
+      "added": 12,
+      "removed": 2,
       "dead": 0,
-      "detailsFetched": 60,
-      "published": 314,
-      "ms": 191057
+      "detailsFetched": 73,
+      "published": 324,
+      "ms": 211625
     },
     {
       "slug": "goldman-sachs",
@@ -523,14 +523,14 @@
       "name": "Home Depot",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 950,
-      "us": 950,
-      "added": 0,
-      "removed": 0,
+      "fetched": 947,
+      "us": 947,
+      "added": 12,
+      "removed": 15,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 752,
-      "ms": 50430
+      "detailsFetched": 12,
+      "published": 753,
+      "ms": 62610
     },
     {
       "slug": "ibm",
@@ -557,21 +557,21 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 77,
-      "ms": 2176
+      "ms": 990
     },
     {
       "slug": "intel",
       "name": "Intel",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 931,
-      "us": 475,
-      "added": 0,
-      "removed": 2,
+      "fetched": 932,
+      "us": 474,
+      "added": 5,
+      "removed": 6,
       "dead": 0,
-      "detailsFetched": 4,
-      "published": 462,
-      "ms": 51305
+      "detailsFetched": 9,
+      "published": 461,
+      "ms": 57065
     },
     {
       "slug": "intuit",
@@ -591,28 +591,28 @@
       "name": "Johnson & Johnson",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1810,
-      "us": 593,
-      "added": 1,
-      "removed": 8,
+      "fetched": 1822,
+      "us": 601,
+      "added": 20,
+      "removed": 12,
       "dead": 0,
-      "detailsFetched": 1,
-      "published": 574,
-      "ms": 92300
+      "detailsFetched": 20,
+      "published": 582,
+      "ms": 112495
     },
     {
       "slug": "jpmorgan-chase",
       "name": "JPMorgan Chase",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 5097,
-      "us": 5097,
-      "added": 3,
-      "removed": 30,
-      "dead": 0,
-      "detailsFetched": 3,
-      "published": 4259,
-      "ms": 285672
+      "fetched": 5063,
+      "us": 5063,
+      "added": 73,
+      "removed": 107,
+      "dead": 2,
+      "detailsFetched": 73,
+      "published": 4232,
+      "ms": 349891
     },
     {
       "slug": "kla",
@@ -621,12 +621,12 @@
       "status": "ok",
       "fetched": 472,
       "us": 471,
-      "added": 0,
-      "removed": 0,
+      "added": 7,
+      "removed": 7,
       "dead": 0,
-      "detailsFetched": 1,
+      "detailsFetched": 8,
       "published": 464,
-      "ms": 26600
+      "ms": 35390
     },
     {
       "slug": "lam-research",
@@ -659,42 +659,42 @@
       "name": "Lyft",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 145,
-      "us": 73,
+      "fetched": 144,
+      "us": 72,
       "added": 0,
-      "removed": 0,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 72,
-      "ms": 548
+      "published": 71,
+      "ms": 1080
     },
     {
       "slug": "mastercard",
       "name": "Mastercard",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 694,
-      "us": 217,
-      "added": 0,
-      "removed": 0,
+      "fetched": 702,
+      "us": 218,
+      "added": 2,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 3,
-      "published": 214,
-      "ms": 39512
+      "detailsFetched": 5,
+      "published": 215,
+      "ms": 43564
     },
     {
       "slug": "merck",
       "name": "Merck",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 824,
-      "us": 249,
-      "added": 0,
-      "removed": 0,
+      "fetched": 831,
+      "us": 256,
+      "added": 8,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 3,
-      "published": 244,
-      "ms": 45328
+      "detailsFetched": 11,
+      "published": 251,
+      "ms": 55134
     },
     {
       "slug": "meta",
@@ -742,26 +742,26 @@
       "status": "ok",
       "fetched": 418,
       "us": 165,
-      "added": 0,
-      "removed": 0,
+      "added": 2,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
       "published": 165,
-      "ms": 779
+      "ms": 762
     },
     {
       "slug": "morgan-stanley",
       "name": "Morgan Stanley",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 827,
-      "us": 826,
-      "added": 1,
-      "removed": 0,
+      "fetched": 826,
+      "us": 825,
+      "added": 5,
+      "removed": 6,
       "dead": 0,
-      "detailsFetched": 2,
-      "published": 806,
-      "ms": 45592
+      "detailsFetched": 6,
+      "published": 805,
+      "ms": 50690
     },
     {
       "slug": "netflix",
@@ -781,98 +781,98 @@
       "name": "Notion",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 170,
+      "fetched": 171,
       "us": 83,
       "added": 0,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
       "published": 83,
-      "ms": 1070
+      "ms": 1013
     },
     {
       "slug": "nvidia",
       "name": "NVIDIA",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2648,
-      "us": 1378,
-      "added": 0,
-      "removed": 1,
+      "fetched": 2635,
+      "us": 1375,
+      "added": 1,
+      "removed": 4,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 1344,
-      "ms": 142081
+      "detailsFetched": 1,
+      "published": 1341,
+      "ms": 144125
     },
     {
       "slug": "openai",
       "name": "OpenAI",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 852,
-      "us": 662,
-      "added": 0,
-      "removed": 0,
+      "fetched": 854,
+      "us": 659,
+      "added": 2,
+      "removed": 5,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 639,
-      "ms": 485
+      "published": 636,
+      "ms": 440
     },
     {
       "slug": "oracle",
       "name": "Oracle",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2156,
-      "us": 2155,
-      "added": 0,
-      "removed": 5,
+      "fetched": 2169,
+      "us": 2168,
+      "added": 33,
+      "removed": 21,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 2121,
-      "ms": 117828
+      "detailsFetched": 33,
+      "published": 2135,
+      "ms": 299911
     },
     {
       "slug": "palantir",
       "name": "Palantir",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 308,
-      "us": 241,
+      "fetched": 306,
+      "us": 239,
       "added": 0,
-      "removed": 0,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 241,
-      "ms": 3129
+      "published": 239,
+      "ms": 2338
     },
     {
       "slug": "palo-alto-networks",
       "name": "Palo Alto Networks",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1351,
-      "us": 593,
-      "added": 1,
-      "removed": 1,
+      "fetched": 1350,
+      "us": 591,
+      "added": 3,
+      "removed": 5,
       "dead": 0,
-      "detailsFetched": 2,
-      "published": 588,
-      "ms": 80687
+      "detailsFetched": 4,
+      "published": 587,
+      "ms": 73266
     },
     {
       "slug": "paypal",
       "name": "PayPal",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 374,
-      "us": 226,
-      "added": 0,
-      "removed": 0,
+      "fetched": 369,
+      "us": 222,
+      "added": 1,
+      "removed": 5,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 224,
-      "ms": 20727
+      "detailsFetched": 1,
+      "published": 220,
+      "ms": 20290
     },
     {
       "slug": "perplexity",
@@ -886,7 +886,7 @@
       "dead": 0,
       "detailsFetched": 0,
       "published": 128,
-      "ms": 1507
+      "ms": 82
     },
     {
       "slug": "philip-morris-international",
@@ -906,42 +906,42 @@
       "name": "Pinterest",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 173,
-      "us": 126,
+      "fetched": 171,
+      "us": 125,
       "added": 0,
-      "removed": 0,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 124,
-      "ms": 964
+      "published": 123,
+      "ms": 956
     },
     {
       "slug": "plaid",
       "name": "Plaid",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 146,
-      "us": 139,
-      "added": 0,
+      "fetched": 147,
+      "us": 140,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 137,
-      "ms": 212
+      "published": 138,
+      "ms": 1004
     },
     {
       "slug": "procter-and-gamble",
       "name": "Procter & Gamble",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 220,
-      "us": 220,
-      "added": 0,
+      "fetched": 222,
+      "us": 222,
+      "added": 2,
       "removed": 0,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 213,
-      "ms": 13565
+      "detailsFetched": 2,
+      "published": 215,
+      "ms": 15991
     },
     {
       "slug": "qualcomm",
@@ -961,14 +961,14 @@
       "name": "Ramp",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 187,
-      "us": 173,
-      "added": 0,
-      "removed": 0,
+      "fetched": 182,
+      "us": 168,
+      "added": 1,
+      "removed": 6,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 173,
-      "ms": 185
+      "published": 168,
+      "ms": 152
     },
     {
       "slug": "reddit",
@@ -976,97 +976,97 @@
       "mode": "fetch",
       "status": "ok",
       "fetched": 148,
-      "us": 130,
-      "added": 0,
-      "removed": 0,
+      "us": 129,
+      "added": 1,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 130,
-      "ms": 847
+      "published": 129,
+      "ms": 894
     },
     {
       "slug": "rippling",
       "name": "Rippling",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 420,
-      "us": 222,
-      "added": 222,
+      "fetched": 419,
+      "us": 223,
+      "added": 223,
       "removed": 0,
-      "dead": 222,
-      "detailsFetched": 222,
+      "dead": 223,
+      "detailsFetched": 223,
       "published": 0,
-      "ms": 230747
+      "ms": 231322
     },
     {
       "slug": "robinhood",
       "name": "Robinhood",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 163,
-      "us": 147,
-      "added": 0,
-      "removed": 0,
+      "fetched": 162,
+      "us": 146,
+      "added": 1,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 143,
-      "ms": 981
+      "published": 142,
+      "ms": 2064
     },
     {
       "slug": "roblox",
       "name": "Roblox",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 259,
-      "us": 238,
-      "added": 0,
-      "removed": 0,
+      "fetched": 258,
+      "us": 237,
+      "added": 1,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 237,
-      "ms": 1494
+      "published": 236,
+      "ms": 1065
     },
     {
       "slug": "rtx",
       "name": "RTX",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 4399,
-      "us": 3468,
-      "added": 3,
-      "removed": 5,
+      "fetched": 4387,
+      "us": 3451,
+      "added": 67,
+      "removed": 84,
       "dead": 0,
-      "detailsFetched": 19,
-      "published": 3372,
-      "ms": 253216
+      "detailsFetched": 84,
+      "published": 3359,
+      "ms": 316761
     },
     {
       "slug": "salesforce",
       "name": "Salesforce",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 597,
-      "us": 597,
-      "added": 1,
-      "removed": 1,
+      "fetched": 588,
+      "us": 588,
+      "added": 3,
+      "removed": 12,
       "dead": 0,
-      "detailsFetched": 1,
-      "published": 592,
-      "ms": 33594
+      "detailsFetched": 3,
+      "published": 583,
+      "ms": 34320
     },
     {
       "slug": "scale-ai",
       "name": "Scale AI",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 162,
-      "us": 125,
-      "added": 0,
+      "fetched": 161,
+      "us": 126,
+      "added": 1,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 125,
-      "ms": 1641
+      "published": 126,
+      "ms": 326
     },
     {
       "slug": "servicenow",
@@ -1086,56 +1086,56 @@
       "name": "Snap",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 205,
-      "us": 137,
-      "added": 0,
-      "removed": 0,
+      "fetched": 204,
+      "us": 136,
+      "added": 1,
+      "removed": 2,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 134,
-      "ms": 11802
+      "detailsFetched": 1,
+      "published": 133,
+      "ms": 12251
     },
     {
       "slug": "snowflake",
       "name": "Snowflake",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 376,
-      "us": 226,
-      "added": 0,
+      "fetched": 380,
+      "us": 230,
+      "added": 4,
       "removed": 0,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 225,
-      "ms": 1186
+      "published": 229,
+      "ms": 1169
     },
     {
       "slug": "spacex",
       "name": "SpaceX",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 2845,
-      "us": 2842,
-      "added": 0,
-      "removed": 0,
+      "fetched": 2855,
+      "us": 2852,
+      "added": 17,
+      "removed": 7,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 2789,
-      "ms": 2368
+      "published": 2798,
+      "ms": 3496
     },
     {
       "slug": "stripe",
       "name": "Stripe",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 776,
-      "us": 374,
-      "added": 0,
-      "removed": 1,
+      "fetched": 779,
+      "us": 378,
+      "added": 6,
+      "removed": 2,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 374,
-      "ms": 490
+      "published": 378,
+      "ms": 1326
     },
     {
       "slug": "tesla",
@@ -1155,14 +1155,14 @@
       "name": "Texas Instruments",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 533,
-      "us": 532,
-      "added": 0,
-      "removed": 1,
+      "fetched": 534,
+      "us": 533,
+      "added": 5,
+      "removed": 4,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 529,
-      "ms": 38452
+      "detailsFetched": 5,
+      "published": 530,
+      "ms": 46425
     },
     {
       "slug": "tiktok",
@@ -1170,13 +1170,13 @@
       "mode": "fetch",
       "status": "ok",
       "fetched": 4162,
-      "us": 1801,
-      "added": 1,
-      "removed": 0,
+      "us": 1802,
+      "added": 2,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 1788,
-      "ms": 44113
+      "published": 1789,
+      "ms": 44891
     },
     {
       "slug": "uber",
@@ -1209,14 +1209,14 @@
       "name": "Visa",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 316,
-      "us": 316,
-      "added": 0,
-      "removed": 0,
+      "fetched": 317,
+      "us": 317,
+      "added": 2,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 315,
-      "ms": 17781
+      "detailsFetched": 2,
+      "published": 316,
+      "ms": 19791
     },
     {
       "slug": "walmart",
@@ -1236,28 +1236,28 @@
       "name": "Wells Fargo",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 1228,
-      "us": 1228,
-      "added": 2,
-      "removed": 29,
+      "fetched": 1285,
+      "us": 1285,
+      "added": 73,
+      "removed": 16,
       "dead": 0,
-      "detailsFetched": 2,
-      "published": 571,
-      "ms": 67986
+      "detailsFetched": 73,
+      "published": 597,
+      "ms": 151346
     },
     {
       "slug": "workday",
       "name": "Workday",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 172,
-      "us": 169,
-      "added": 0,
-      "removed": 2,
+      "fetched": 175,
+      "us": 171,
+      "added": 5,
+      "removed": 3,
       "dead": 0,
-      "detailsFetched": 3,
-      "published": 167,
-      "ms": 23966
+      "detailsFetched": 9,
+      "published": 169,
+      "ms": 29999
     },
     {
       "slug": "xai",
@@ -1265,27 +1265,27 @@
       "mode": "fetch",
       "status": "ok",
       "fetched": 299,
-      "us": 278,
+      "us": 277,
       "added": 0,
-      "removed": 0,
+      "removed": 1,
       "dead": 0,
       "detailsFetched": 0,
-      "published": 271,
-      "ms": 1026
+      "published": 270,
+      "ms": 174
     },
     {
       "slug": "zoom",
       "name": "Zoom",
       "mode": "fetch",
       "status": "ok",
-      "fetched": 33,
-      "us": 33,
-      "added": 0,
-      "removed": 3,
+      "fetched": 37,
+      "us": 37,
+      "added": 5,
+      "removed": 1,
       "dead": 0,
-      "detailsFetched": 0,
-      "published": 32,
-      "ms": 3731
+      "detailsFetched": 5,
+      "published": 36,
+      "ms": 8417
     }
   ],
   "unclassified": [
@@ -1324,10 +1324,6 @@
     {
       "company": "amd",
       "title": "CVP, Cloud Business Group"
-    },
-    {
-      "company": "amd",
-      "title": "Fellow Engineering"
     },
     {
       "company": "amd",
@@ -1523,6 +1519,10 @@
     },
     {
       "company": "visa",
+      "title": "Director, Visa Consulting & Analytics (VCA), EMF Practice"
+    },
+    {
+      "company": "visa",
       "title": "Sr. Director, Commercial Portfolio Optimization"
     },
     {
@@ -1576,10 +1576,6 @@
     {
       "company": "visa",
       "title": "Director, Core Issuing Solutions LAC"
-    },
-    {
-      "company": "visa",
-      "title": "Senior Director, Client Success"
     },
     {
       "company": "visa",
@@ -2127,6 +2123,10 @@
     },
     {
       "company": "cisco",
+      "title": "Director, Splunk Events"
+    },
+    {
+      "company": "cisco",
       "title": "Renewals Specialist"
     },
     {
@@ -2203,15 +2203,31 @@
     },
     {
       "company": "johnson-and-johnson",
+      "title": "Director Strategic Accounts (Northwest Region) - Johnson & Johnson MedTech, Circulatory Restoration (Shockwave IVL)"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Lead Commercial Education Specialist"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Key Account Specialist, Dermatology (Seattle WA & Portland OR) – Johnson & Johnson Innovative Medicine"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Manager, Contracting Solutions"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Technology Director, ERP Deliver"
+    },
+    {
+      "company": "johnson-and-johnson",
+      "title": "Senior Director, Global Strategic Analytics"
+    },
+    {
+      "company": "johnson-and-johnson",
       "title": "Field Excellence Manager, Lung"
-    },
-    {
-      "company": "johnson-and-johnson",
-      "title": "Budget & Performance Management Lead"
-    },
-    {
-      "company": "johnson-and-johnson",
-      "title": "Associate Director, Project & Portfolio Leader"
     },
     {
       "company": "johnson-and-johnson",
@@ -2276,10 +2292,6 @@
     {
       "company": "johnson-and-johnson",
       "title": "Chief Architect - Innovative Medicine Technology"
-    },
-    {
-      "company": "johnson-and-johnson",
-      "title": "Technology Director, ERP Deliver"
     },
     {
       "company": "johnson-and-johnson",
@@ -2451,10 +2463,6 @@
     },
     {
       "company": "johnson-and-johnson",
-      "title": "Professional, US Commercial Excellence"
-    },
-    {
-      "company": "johnson-and-johnson",
       "title": "Technical Lead, CX Insights & Analytics"
     },
     {
@@ -2476,10 +2484,6 @@
     {
       "company": "johnson-and-johnson",
       "title": "Director Strategic Accounts (Denver or Dallas) - Johnson & Johnson MedTech, Circulatory Restoration (Shockwave IVL)"
-    },
-    {
-      "company": "johnson-and-johnson",
-      "title": "Senior Director, Global Strategic Analytics"
     },
     {
       "company": "johnson-and-johnson",
@@ -2875,19 +2879,15 @@
     },
     {
       "company": "coca-cola",
+      "title": "Director, Franchise Intelligence"
+    },
+    {
+      "company": "coca-cola",
       "title": "Executive Assistant - Aviation"
     },
     {
       "company": "coca-cola",
       "title": "Director, Field Quality"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Director, Connections & Media"
-    },
-    {
-      "company": "coca-cola",
-      "title": "Executive Administrative Assistant"
     }
   ]
 }
